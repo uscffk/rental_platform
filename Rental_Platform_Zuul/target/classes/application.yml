@@ -1,0 +1,15 @@
+server:
+  port: 9527
+spring:
+  application:
+    name: Rental_Platform_Zuul
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+  instance:
+    instance-id: zuul
+    prefer-ip-address: true
+
