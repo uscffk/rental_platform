@@ -13,9 +13,7 @@
         <module>Rental_Platform_Zuul</module>
         <module>Rental_Platform_CommonApi</module>
         <module>Rental_Platform_Config_Server</module>
-        <module>Test</module>
         <module>Rental_Platform_UserService</module>
-        <module>Rental_Platform_Commodity</module>
         <module>Rental_Platform_CommodityService</module>
         <module>Rental_Platform_CommodityService</module>
         <module>Rental_Platform_Payment</module>
