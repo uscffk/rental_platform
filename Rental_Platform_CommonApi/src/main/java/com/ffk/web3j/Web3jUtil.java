@@ -88,6 +88,7 @@ public class Web3jUtil {
                 // 将单位转为以太
                 System.out.println("账号余额：" + Convert.fromWei(ethGetBalance.getBalance().toString(), Convert.Unit.ETHER)+"ETH");
             }
+
         }
         catch (ConnectException e){
             throw new ConnectException("################连接失败，客户端挂了");

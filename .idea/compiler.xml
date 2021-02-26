@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -12,21 +13,19 @@
         <module name="Rental_Platform_BusinessService" />
         <module name="Rental_Platform_Config_Server" />
         <module name="Rental_Platform_CommonApi" />
-        <module name="Rental_Platform_CommodityService" />
         <module name="Rental_Platform_RentService" />
         <module name="Rental_Platform_Commodity" />
         <module name="Rental_Platform_depositService" />
+        <module name="Test" />
         <module name="Rental_Platform_backService" />
+        <module name="Rental_Platform_StockService" />
         <module name="Rental_Platform_OrderService" />
         <module name="Rental_Platform_UserService" />
         <module name="Rental_Platform_PlatformService" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Rental_Platform_Commodity" target="1.5" />
       <module name="Rental_Platform_CommodityService" target="1.5" />
-      <module name="Rental_Platform_PlatformService" target="1.5" />
-      <module name="Test" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

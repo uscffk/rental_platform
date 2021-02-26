@@ -1,0 +1,47 @@
+#端口号配置
+server:
+  port: 8003
+
+#mybatis配置
+mybatis:
+  type-aliases-package: com.ffk.pojo
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  config-location: classpath:mybatis/mybatis-config.xml
+
+#spring配置
+spring:
+  application:
+    name: CommodityService
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/commodity?useUnicode=true&CharacterEncoding=utf-8
+    username: root
+    password: ffk123
+#redis
+  redis:
+    host: 127.0.0.1 #redis服务器IP地址
+    port: 6379 #端口号
+    jedis:
+      pool:
+        max-active: 8 #最大连接数
+        max-idle: 8 #最大空闲数
+        min-idle: 0 #最小空闲数
+        max-wait: 30000 #最大等待时间 ms(毫秒)
+    timeout: 50000 #连接超时时间 ms（毫秒）
+    database: 0 #连接的数据库
+
+  cloud:
+    alibaba:
+      seata: rent_tx_group
+
+
+
+
+#Eureka的配置 配置服务注册到哪里  defaultZone是一个请求，表示服务注册
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+  instance:
+    instance-id: CommodityService-8003

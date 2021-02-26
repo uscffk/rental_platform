@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ffk.dao.IStock">
+
+    <insert id="insertStock" parameterType="stock">
+        insert into stocks (id,commodity_id,number)
+        values (null ,#{commodityId},#{number})
+    </insert>
+
+    <delete id="deleteStock">
+        delete from stocks where id = #{id}
+    </delete>
+
+    <update id="addStock">
+        update stocks set number += #{count}
+        where commodity_id = #{commodityId}
+    </update>
+
+    <update id="decreaseStock">
+        update stocks set number -= #{count}
+        where commodity_id = #{commodityId}
+    </update>
+
+    <select id="queryStock" resultType="stock">
+        select commodity_id,number from stocks
+        where commodity_id = #{commodityId}
+    </select>
+
+</mapper>

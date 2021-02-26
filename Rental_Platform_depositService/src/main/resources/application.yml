@@ -1,0 +1,28 @@
+#端口号配置
+server:
+  port: 8004
+
+#mybatis配置
+mybatis:
+  type-aliases-package: com.ffk.pojo
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  config-location: classpath:mybatis/mybatis-config.xml
+
+#spring配置
+spring:
+  application:
+    name: DepositService
+
+  cloud:
+    alibaba:
+      seata: rent_tx_group
+
+
+
+#Eureka的配置 配置服务注册到哪里  defaultZone是一个请求，表示服务注册
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+  instance:
+    instance-id: DepositService-8004

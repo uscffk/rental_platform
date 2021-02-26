@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ffk.dao.ICommodityCategory">
+
+    <insert id="addCategory" parameterType="commodityCategory">
+        insert into category (id,name,discription)
+        values (null,#{name},#{discription})
+    </insert>
+
+    <select id="queryCategory" parameterType="map" resultType="commodityCategory">
+        select * from category
+        <where>
+            <if test="id!=null">
+                AND id = #{id}
+            </if>
+        </where>
+    </select>
+
+    <update id="updateCategory" parameterType="commodityCategory">
+        update category set name = #{name},discription = #{discription}
+    </update>
+
+    <delete id="deleteCategory">
+        delete from category where id = #{id}
+    </delete>
+
+</mapper>

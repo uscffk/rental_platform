@@ -8,14 +8,21 @@
     <artifactId>Rental_Platform</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
+
+    <properties>
+        <junit.version>4.12</junit.version>
+        <lombok.version>1.18.16</lombok.version>
+        <log4j.version>1.2.17</log4j.version>
+    </properties>
+
     <modules>
         <module>Rental_Platform_Eureka</module>
         <module>Rental_Platform_Zuul</module>
         <module>Rental_Platform_CommonApi</module>
         <module>Rental_Platform_Config_Server</module>
         <module>Rental_Platform_UserService</module>
-        <module>Rental_Platform_CommodityService</module>
-        <module>Rental_Platform_CommodityService</module>
+        <module>Rental_Platform_Commodity</module>
         <module>Rental_Platform_Payment</module>
         <module>Rental_Platform_depositService</module>
         <module>Rental_Platform_OrderService</module>
@@ -24,6 +31,9 @@
         <module>Rental_Platform_PlatformService</module>
         <module>Rental_Platform_PlatformService</module>
         <module>Rental_Platform_RentService</module>
+        <module>Rental_Platform_Commodity</module>
+        <module>Rental_Platform_StockService</module>
+        <module>Test</module>
     </modules>
 
     <dependencyManagement>
@@ -87,6 +97,50 @@
                 <artifactId>core</artifactId>
                 <version>3.4.0</version>
             </dependency>
+<!--swagger-->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>2.9.2</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>2.9.2</version>
+            </dependency>
+<!--        seata-->
+            <!-- https://mvnrepository.com/artifact/com.alibaba.cloud/spring-cloud-alibaba-seata -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-seata</artifactId>
+                <version>2.0.1.RELEASE</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>seata-all</groupId>
+                        <artifactId>io.seata</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>io.seata</groupId>
+                <artifactId>seata-all</artifactId>
+                <version>0.9.0</version>
+            </dependency>
+
+<!--            hutool-->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>4.6.10</version>
+            </dependency>
+
         </dependencies>
+
+<!--Eureka        -->
+
+<!--Eureka-client        -->
+
+
+
     </dependencyManagement>
 </project>
