@@ -1,3 +1,7 @@
 web3j:
   client-address: http://127.0.0.1:8545
+<<<<<<< HEAD
   admin-client: true
+=======
+  admin-client: true
+>>>>>>> bc91416171e3b3f0d6234439f03ae92b8063762d

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Rental_Platform_CommodityService/Rental_Platform_CommodityService.iml" filepath="$PROJECT_DIR$/Rental_Platform_CommodityService/Rental_Platform_CommodityService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Rental_Platform_PlatformService/Rental_Platform_PlatformService.iml" filepath="$PROJECT_DIR$/Rental_Platform_PlatformService/Rental_Platform_PlatformService.iml" />
+    </modules>
+  </component>
+</project>

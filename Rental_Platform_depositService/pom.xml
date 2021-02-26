@@ -11,6 +11,7 @@
 
     <artifactId>Rental_Platform_depositService</artifactId>
 
+<<<<<<< HEAD
     <dependencies>
         <!--        springboot-web-->
         <dependency>
@@ -134,4 +135,7 @@
             <version>1.2.73</version>
         </dependency>
     </dependencies>
+=======
+
+>>>>>>> bc91416171e3b3f0d6234439f03ae92b8063762d
 </project>
