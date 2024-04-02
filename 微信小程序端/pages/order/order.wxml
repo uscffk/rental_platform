@@ -1,0 +1,45 @@
+<import src="/dist/loadmore/index.wxml" />
+<import src="/dist/tab/index.wxml" />
+<import src="/common/copyright/copyright" />
+
+<view class="container">
+  <view class="tab-wrap" wx:if="{{!isLoading}}">
+    <template is="zan-tab" data="{{tab: orderTab, componentId: 'orderTab'}}"></template>
+  </view>
+  <view class="order">
+ 
+	<view class="content_" wx:for="{{orderlist}}">
+		<view class="card" data-key="{{item.orderId}}">
+			<view class="card-img" data-key="{{item.orderId}}" bindtap="goOrderDetail">
+				<image src="{{imagePrefix}}commodityService/upload/imgs/{{item.commodity.picture}}"></image>
+			</view>
+			<view class="card-text">
+				<view class="card-text_">
+          <text style="font-size: 9pt;color: #999;">商品名称:{{item.commodity.name}}\n下单时间:\n{{item.creatTime}}
+					</text>
+					<view style="width:100px">
+						<view>￥{{item.sumMoney}}</view>
+						<!-- 以租代售才显示 -->
+            <text wx:if="{{item.orderType==1}}">期数x{{item.totalTime}}\n</text>
+						<!-- 以租代售才显示 -->
+            <text wx:if="{{item.orderType==1}}" style="width:100px">当前期数:{{item.currTime}}\n</text>
+						<!-- 以租代售才显示 -->
+            <text wx:if="{{item.orderType==1}}">已支付:￥{{item.actualPay}}</text>
+					</view>
+				</view>
+				<view class="card-button">
+          <!-- 判断订单类型 提供续租 退租 购买 -->
+					<button bindtap="goComment" wx:if="{{item.comment==0&&(item.status==1||item.status==4)}}" style="width: 64px;background-color: rgb(248,248,255);height: 32px;font-size: 12px;margin-left: -5px;" data-key="{{item.orderId}}">评价</button>
+					<button disabled="true" wx:if="{{item.comment==1}}" style="width: 64px;height: 32px;font-size: 12px;margin-left: -5px;">已评价</button>
+					<!-- 订单在进行中且支持先租后买模式 -->
+					<button bindtap="goBuy" wx:if="{{item.status==0&&item.commodity.rentBeforeBuy==1}}" style="width: 60px;height: 32px;font-size: 12px;margin-left: -5px;" data-key="{{item.orderId}}">购买</button>
+				</view>
+			</view>
+    </view>
+    <view class="title">
+      <!-- 判断交易状态 -->
+			<text style="text-align:right">{{item.status==0?'交易进行中':item.status==1?'交易已完成':item.status==2?'未履约':'已购买'}}</text>
+    </view> 
+	</view>
+</view>
+</view>

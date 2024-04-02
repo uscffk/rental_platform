@@ -17,11 +17,16 @@
     </select>
 
     <update id="updateCategory" parameterType="commodityCategory">
-        update category set name = #{name},discription = #{discription}
+        update category set name = #{name},discription = #{discription} where id = #{id}
     </update>
 
     <delete id="deleteCategory">
         delete from category where id = #{id}
     </delete>
+
+    <select id="getTotal" resultType="java.lang.Integer">
+        select count(*) from category
+    </select>
+
 
 </mapper>

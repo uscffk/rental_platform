@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ffk.dao.IManufacturerProfit">
+
+    <insert id="addManufacturerProfit" parameterType="manufacturerProfit">
+       insert into manuprofit(id, commodityId, profitTime, amount,`from`,manufacturerId)
+       VALUES(null,#{commodityId},#{profitTime},#{amount},#{from},#{manufacturerId})
+    </insert>
+
+    <select id="queryManufacturerProfit" parameterType="map" resultType="manufacturerProfit">
+        select * from manuprofit
+        <where>
+            <if test="id!=null">
+                id = #{id}
+            </if>
+            <if test="commodityId!=null">
+                AND commodityId = #{commodityId}
+            </if>
+            <if test="from!=null">
+                AND `from` = #{from}
+            </if>
+            <if test="manufacturerId!=null">
+                manufacturerId = #{manufacturerId}
+            </if>
+        </where>
+        <choose>
+        <when test="byDay!=null">
+            group by DATE(profitTime)
+        </when>
+        <when test="byWeek!=null">
+            group by WEEK(profitTime)
+        </when>
+        <when test="byMonth!=null">
+            group by MONTH(profitTime)
+        </when>
+        <when test="byYear!=null">
+            group by YEAR(profitTime)
+        </when>
+    </choose>
+    <if test="limit!=null">
+        limit #{offset}, #{limit}
+    </if>
+
+    </select>
+
+
+</mapper>

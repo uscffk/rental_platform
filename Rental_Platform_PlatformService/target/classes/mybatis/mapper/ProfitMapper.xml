@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ffk.dao.IProfit">
+
+    <select id="queryProfit" parameterType="map" resultType="profit">
+        select * from profit
+        <where>
+            <if test="id!=null">
+                id = #{id}
+            </if>
+            <if test="from!=null">
+                AND `from` = #{from}
+            </if>
+            <if test="amount!=null">
+                AND amount = #{amount}
+            </if>
+        </where>
+        <choose>
+            <when test="byDay!=null">
+                group by DATE(profitTime)
+            </when>
+            <when test="byWeek!=null">
+                group by WEEK(profitTime)
+            </when>
+            <when test="byMonth!=null">
+                group by MONTH(profitTime)
+            </when>
+            <when test="byYear!=null">
+                group by YEAR(profitTime)
+            </when>
+        </choose>
+            <if test="limit!=null">
+                limit #{offset}, #{limit}
+            </if>
+    </select>
+
+
+    <insert id="addProfit" parameterType="profit">
+        insert into profit(id, `from`, amount, profitTime) VALUES (null,#{from},#{amount},#{profitTime})
+    </insert>
+</mapper>

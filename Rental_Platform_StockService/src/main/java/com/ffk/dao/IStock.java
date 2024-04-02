@@ -2,6 +2,7 @@ package com.ffk.dao;
 
 import com.ffk.pojo.Stock;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
  * @date 2021/2/23 15:46
  */
 @Repository
+@Mapper
 public interface IStock {
     /**
      * 增加库存记录
@@ -31,7 +33,7 @@ public interface IStock {
      * @param count 数量
      * @return
      */
-    int decreaseStock(@PathVariable int commodityId, @PathVariable int count);
+    int decreaseStock(@Param("commodityId") int commodityId, @Param("count") int count);
 
     /**
      * 加库存
@@ -39,7 +41,7 @@ public interface IStock {
      * @param count  数量
      * @return
      */
-    int addStock(int commodityId,int count);
+    int addStock(@Param("commodityId") int commodityId, @Param("count") int count);
     /**
      * 查询库存
      * @param commodityId
@@ -47,4 +49,10 @@ public interface IStock {
      */
     Stock queryStock(int commodityId);
 
+    /**
+     * 更新库存
+     * @param stock
+     * @return
+     */
+    int updateStock(Stock stock);
 }

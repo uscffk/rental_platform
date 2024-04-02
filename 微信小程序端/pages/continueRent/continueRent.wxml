@@ -1,0 +1,71 @@
+<!-- 续租 智能共享租赁平台v2.0舍弃续租这个功能 -->
+ <view class="cart_content">
+    <view class="cart_title" style="text-align:center">续租信息</view>
+    <view class="cart_main">
+      <view class="cart_item" >
+            <!-- 商品图片 -->
+            <navigator class="cart_img_wrap">
+            <image mode="widthFix" src="http://localhost:9527/commodityService/upload/imgs/{{commodity.picture}}" ></image>
+            </navigator>
+            <!-- 商品信息 -->
+            <view class="cart_info_wrap">
+              <view class="goods_name">{{commodity.name}}</view>
+              <view class="font">请在下方选择续租时间</view>
+              <view class="goods_price_wrap">
+                <view class="goods_price">￥{{commodity.rentPrice}}{{commodity.billMethod==0?'/小时':commodity.billMethod==1?'/天':"/月"}}</view>
+                <view class="cart_num_tool">
+                  <view bindtap="handleItemNumEditDecrease"  data-operation="{{-1}}" class="num_edit">-</view>
+                <view class="goods_num">{{num}}</view>
+                <view bindtap="handleItemNumEditIncrease"  data-operation="{{1}}"  class="num_edit">+</view>
+              </view>
+                </view>
+              </view>
+            
+          </view>
+    </view>
+  </view>
+  <!-- 订单信息 -->
+  <view class="msg_list">
+
+    <view class="msg_item">
+        <view>订单类型</view>
+        <view>{{commodity.sharingRent==1?'共享租赁订单':commodity.rentBeforeBuy==1?'先租后买订单':'以租代售订单'}}</view>
+    </view>
+
+    <view class="msg_item">
+        <view>商家</view>
+        <view>{{commodity.manufacturers.name}}</view>
+    </view>
+
+    <view class="msg_item">
+        <view>单期租赁价格</view>
+        <view>￥{{commodity.rentPrice}}</view>
+    </view>
+
+    <view class="msg_item">
+        <view>计费方式</view>
+        <view>{{commodity.billMethod==0?'按小时':commodity.billMethod==1?'按天':'按月'}}</view>
+    </view>
+
+    <view class="msg_item">
+        <view>所需押金</view>
+        <!-- 需要判断是否为免押用户 -->
+        <view>{{commodity.deposit}}</view>
+    </view>
+
+</view>
+
+  <!-- 底部工具栏 -->
+  <view class="footer_tool">
+    <!-- 总价格 -->
+    <view class="total_price_wrap">
+      <view class="total_price">
+        合计: <text class="total_price_text">￥{{totalPrice}}</text>
+      </view>
+      <view  class="font">若实际使用时间超过下单时间则将额外收费</view>
+    </view>
+    <view class="order_pay_wrap" bindtap="handleOrderPay"  >
+      续租
+    </view>
+  </view>
+

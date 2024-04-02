@@ -8,7 +8,6 @@
     <artifactId>Rental_Platform</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-<<<<<<< HEAD
 
 
     <properties>
@@ -17,20 +16,13 @@
         <log4j.version>1.2.17</log4j.version>
     </properties>
 
-=======
->>>>>>> bc91416171e3b3f0d6234439f03ae92b8063762d
     <modules>
         <module>Rental_Platform_Eureka</module>
         <module>Rental_Platform_Zuul</module>
         <module>Rental_Platform_CommonApi</module>
         <module>Rental_Platform_Config_Server</module>
         <module>Rental_Platform_UserService</module>
-<<<<<<< HEAD
         <module>Rental_Platform_Commodity</module>
-=======
-        <module>Rental_Platform_CommodityService</module>
-        <module>Rental_Platform_CommodityService</module>
->>>>>>> bc91416171e3b3f0d6234439f03ae92b8063762d
         <module>Rental_Platform_Payment</module>
         <module>Rental_Platform_depositService</module>
         <module>Rental_Platform_OrderService</module>
@@ -39,12 +31,9 @@
         <module>Rental_Platform_PlatformService</module>
         <module>Rental_Platform_PlatformService</module>
         <module>Rental_Platform_RentService</module>
-<<<<<<< HEAD
         <module>Rental_Platform_Commodity</module>
         <module>Rental_Platform_StockService</module>
-        <module>Test</module>
-=======
->>>>>>> bc91416171e3b3f0d6234439f03ae92b8063762d
+        <module>depoly</module>
     </modules>
 
     <dependencyManagement>
@@ -108,7 +97,7 @@
                 <artifactId>core</artifactId>
                 <version>3.4.0</version>
             </dependency>
-<<<<<<< HEAD
+
 <!--swagger-->
             <dependency>
                 <groupId>io.springfox</groupId>
@@ -146,16 +135,39 @@
                 <version>4.6.10</version>
             </dependency>
 
+            <!--      文件上传-->
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>1.4</version>
+            </dependency>
+
+            <!--      commons-io-->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>2.4</version>
+            </dependency>
+
+<!--            <dependency>-->
+<!--                <groupId>org.web3j</groupId>-->
+<!--                <artifactId>core</artifactId>-->
+<!--                <version>5.0.0</version>-->
+<!--                <exclusions>-->
+<!--                    <exclusion>-->
+<!--                        <groupId>com.squareup.okhttp3</groupId>-->
+<!--                        <artifactId>okhttp</artifactId>-->
+<!--                    </exclusion>-->
+<!--                </exclusions>-->
+<!--            </dependency>-->
+
+<!--            <dependency>-->
+<!--                <groupId>com.squareup.okhttp3</groupId>-->
+<!--                <artifactId>okhttp</artifactId>-->
+<!--                <version>4.9.0</version>-->
+<!--            </dependency>-->
+
         </dependencies>
 
-<!--Eureka        -->
-
-<!--Eureka-client        -->
-
-
-
-=======
-        </dependencies>
->>>>>>> bc91416171e3b3f0d6234439f03ae92b8063762d
     </dependencyManagement>
 </project>

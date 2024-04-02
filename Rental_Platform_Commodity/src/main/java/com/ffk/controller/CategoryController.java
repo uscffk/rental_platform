@@ -5,10 +5,9 @@ import com.ffk.pojo.CommodityCategory;
 import com.ffk.pojo.CommonResult;
 import com.ffk.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.jca.cci.CciOperationNotSupportedException;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -29,6 +28,7 @@ public class CategoryController {
      */
     @RequestMapping(value = "",method = RequestMethod.GET)
     public CommonResult getCategory(){
+        System.out.println(1);
         HashMap<String, String> map = new HashMap<>(1);
         try {
             List<CommodityCategory> commodityCategories = categoryService.queryCategory(map);
@@ -61,7 +61,7 @@ public class CategoryController {
      * @return
      */
     @RequestMapping(value = "/{id}",method = RequestMethod.PUT)
-    public CommonResult updateCategory(CommodityCategory category){
+    public CommonResult updateCategory(@RequestBody CommodityCategory category){
         if(category!=null){
             try {
                 int rs = categoryService.updateCategory(category);
@@ -81,7 +81,7 @@ public class CategoryController {
      * @return
      */
     @RequestMapping(value = "",method = RequestMethod.POST)
-    public CommonResult addCategory(CommodityCategory category){
+    public CommonResult addCategory(@RequestBody CommodityCategory category){
         try {
             int rs = categoryService.addCategory(category);
             if(rs>0){
@@ -99,7 +99,7 @@ public class CategoryController {
      * @param id
      * @return
      */
-    @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{id}",method = RequestMethod.POST)
     public CommonResult deleteCategory(@PathVariable int id){
         try {
             int rs = categoryService.deleteCategory(id);
@@ -110,5 +110,21 @@ public class CategoryController {
             return new CommonResult(Constants.FAIL_CODE,"失败",null);
         }
         return new CommonResult(Constants.FAIL_CODE,"失败",null);
+    }
+
+    /**
+     * 查种类数目
+     * @return
+     */
+    @RequestMapping(value = "/queryTotal",method = RequestMethod.POST)
+    public CommonResult queryTotal(){
+        try {
+            int total = categoryService.getTotal();
+            return new CommonResult(Constants.SUCCESS_CODE,"ok",total);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return new CommonResult(Constants.FAIL_CODE,"error",null);
     }
 }

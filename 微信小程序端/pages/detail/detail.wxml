@@ -1,0 +1,100 @@
+<view class="container">
+<!-- 这里本来是做一个轮播图的 感觉没多大必要一个商品配多种图片吧 毕竟是面对面租赁 -->
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <!-- <block wx:key="" wx:for="{{imgUrls}}"> -->
+    <block wx:key="">
+      <swiper-item>
+        <image wx:if="{{goodsObj.picture}}" src="{{imagePrefix}}commodityService/upload/imgs/{{goodsObj.picture}}" class="slide-image" />
+      </swiper-item>
+    </block>
+  </swiper>
+
+<!-- 租赁模式 付费方式 每期费用 -->
+  <view class="zan-panel"  style="color:rgb(204,0,1)">
+    <view style="padding: 15px;">
+      <text class="title" style="font-size:18px">{{goodsObj.name}}</text>
+      <text class="new">￥{{goodsObj.rentForSale==1?'分期支付/总价'+goodsObj.sellPrice:goodsObj.rentPrice}}</text>
+      <text class="old">/{{goodsObj.billMethod==0?'小时':goodsObj.billMethod==1?'天':'月'}}</text>
+      <text wx:if="{{goodsObj.rentBeforeBuy==1}}">支持先租后买</text>
+    </view>
+  </view>
+
+  <view class="zan-panel select-wrap">
+    <!-- 商品分类 -->
+    <view class="zan-cell zan-cell--access" bindtap="toggleDialog">
+      <view class="select">分类</view>
+      <view class="zan-cell__bd">
+        <view class="">{{goodsObj.categories.name}}</view>
+      </view>
+      <view class="icon"></view>
+    </view>
+    <!--厂商 -->
+    <view class="zan-cell zan-cell--access" bindtap="toggleDialog">
+      <view class="select">厂商</view>
+      <view class="zan-cell__bd">
+        <view class="">{{goodsObj.manufacturers.name}}</view>
+      </view>
+      <view class="icon"></view>
+    </view>
+<!-- 商品租赁模式 -->
+    <view class="zan-cell zan-cell--access" bindtap="toggleDialog">
+      <view class="select">租赁模式</view>
+      <view class="zan-cell__bd">
+        <view class="">{{goodsObj.sharingRent==1?'共享租赁':goodsObj.rentBeforeBuy==1?'先租后买':'以租代售'}}</view>
+      </view>
+      <view class="icon"></view>
+    </view>
+    <!-- 所需押金 -->
+    <view class="zan-cell zan-cell--access" bindtap="toggleDialog">
+      <view class="select">所需押金</view>
+      <view class="zan-cell__bd">
+        <view class="">{{goodsObj.deposit==0?'免押':goodsObj.deposit}}</view>
+      </view>
+      <view class="icon"></view>
+    </view>
+
+    <!-- 计费方式 -->
+    <view class="zan-cell zan-cell--access" bindtap="toggleDialog">
+      <view class="select">计费方式</view>
+      <view class="zan-cell__bd">
+        <view class="">{{goodsObj.billMethod==0?'按小时':goodsObj.billMethod==1?'按天':'按月'}}</view>
+      </view>
+      <view class="icon"></view>
+    </view>
+
+    <!-- 库存 -->
+    <view class="zan-cell zan-cell--access" bindtap="toggleDialog">
+      <view class="select">库存</view>
+      <view class="zan-cell__bd">
+        <view class="">{{goodsObj.stock.number}}</view>
+      </view>
+      <view class="icon"></view>
+    </view>
+
+    <!-- 租赁区域 -->
+  <view class="zan-cell zan-cell--access" bindtap="toggleDialog">
+      <view class="select">租赁区域</view>
+      <view class="zan-cell__bd">
+        <view class="">{{goodsObj.detailLoc}}</view>
+      </view>
+      <view class="icon"></view>
+    </view>
+  </view>
+
+   <!-- 商品详情 -->
+  <view class="zan-panel">
+    <view style="padding: 10px 0;">
+      <view class="zan-panel-title detailtitle">商品详情<text>\n\n</text>{{goodsObj.discription}}</view>
+    </view>
+  </view>
+</view>
+<!-- 
+  收藏/立即前往
+ -->
+<view class="bot-bar">
+  <view class="bot-bar-btn">
+    <view class="left" bindtap="like" data-gowhere="cart">{{islike==0?'收藏':'已收藏'}}</view>
+    <view class="right" bindtap="gomap" data-key="{{goodsObj}}" data-detailLoc="{{goodsObj.detailLoc}}" data-latitude="{{goodsObj.latitude}}" data-longitude="{{goodsObj.longitude}}" data-manufacturerId="{{goodsObj.manufacturerId}}">立即前往</view>
+  </view>
+</view>
+

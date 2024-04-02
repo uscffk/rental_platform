@@ -1,0 +1,86 @@
+<view class="container">
+  <map
+      id="myMap"
+      style="width: 100%; height: 300px;"
+      latitude="{{latitude}}"
+      longitude="{{longitude}}"
+      show-location
+      markers="{{markers}}"
+      data-markers="{{markers}}"
+      bindmarkertap="clickMarker"
+    ></map>
+<view class="zan-panel select-wrap">
+
+<!-- NFT ID -->
+<view class="zan-cell zan-cell--access">
+  <view class="select">NFT ID</view>
+    <view class="zan-cell__bd">
+      <view class="">{{nftCommodity.nftTokenId}}</view>
+    </view>
+  <view class="icon"></view>
+</view>
+
+<!-- 商品分类 -->
+<view class="zan-cell zan-cell--access" bindtap="toggleDialog">
+ <view class="select">分类</view>
+ <view class="zan-cell__bd">
+   <view class="">{{nftCommodity.commodity.categories.name}}</view>
+ </view>
+ <view class="icon"></view>
+</view>
+
+<!-- 商品租赁模式 -->
+<view class="zan-cell zan-cell--access" bindtap="toggleDialog">
+ <view class="select">租赁模式</view>
+ <view class="zan-cell__bd">
+   <view class="">{{order.orderType==0?'共享租赁':order.orderType==2?'先租后买':'以租代售'}}</view>
+ </view>
+ <view class="icon"></view>
+</view>
+
+<!-- 押金 -->
+<view class="zan-cell zan-cell--access" bindtap="toggleDialog">
+ <view class="select">已缴押金</view>
+ <view class="zan-cell__bd">
+   <view class="">￥{{order.deposit==0?'免押':order.deposit}}</view>
+ </view>
+ <view class="icon"></view>
+</view>
+
+<!-- 计费方式 -->
+<view class="zan-cell zan-cell--access" bindtap="toggleDialog">
+ <view class="select">计费方式</view>
+ <view class="zan-cell__bd">
+   <view class="">{{order.billMethod==0?'按小时':order.billMethod==1?'按天':'按月'}}</view>
+ </view>
+ <view class="icon"></view>
+</view>
+
+<!-- 单期价格 -->
+<view class="zan-cell zan-cell--access" bindtap="toggleDialog">
+ <view class="select">单期价格</view>
+ <view class="zan-cell__bd">
+   <view class="">￥{{nftCommodity.commodity.rentPrice}}</view>
+ </view>
+ <view class="icon"></view>
+</view>
+
+<!-- 开始时间 -->
+<view class="zan-cell zan-cell--access" bindtap="toggleDialog">
+ <view class="select">开始时间</view>
+ <view class="zan-cell__bd">
+   <view class="">{{order.creatTime}}</view>
+ </view>
+ <view class="icon"></view>
+</view>
+
+<!-- 退租 -->
+<view class="bot-bar">
+  <view class="bot-bar-btn">
+    <view class="left" bindtap="backRent" data-gowhere="goOrder" wx:if="{{nftCommodity.status!=3}}">立即退租</view>
+    <view class="left" wx:if="{{nftCommodity.status==3}}">已售出</view>
+    <view class="right" bindtap="goIndex" data-key="{{goodsObj}}" data-detailLoc="{{goodsObj.detailLoc}}" data-latitude="{{goodsObj.latitude}}" data-longitude="{{goodsObj.longitude}}">继续使用</view>
+  </view>
+</view>
+</view>
+</view>

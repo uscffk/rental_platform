@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ffk.dao.IOrder">
+
+    <select id="queryOrder" parameterType="map" resultType="order">
+        select * from orders
+        <where>
+            <if test="orderId!=null">
+                orderId = #{orderId}
+            </if>
+            <if test="manufacturerId!=null">
+                AND manufacturerId = #{manufacturerId}
+            </if>
+            <if test="status!=null">
+                AND status = #{status}
+            </if>
+            <if test="orderType!=null">
+                AND orderType = #{orderType}
+            </if>
+            <if test="creatTime!=null">
+                AND creatTime = #{creatTime}
+            </if>
+            <if test="payTime!=null">
+                AND unix_timestamp(nextPay) &lt; unix_timestamp(#{payTime})
+            </if>
+            <if test="comment!=null">
+                AND comment = #{comment}
+            </if>
+            <if test="billMethod!=null">
+                AND billMethod = #{billMethod}
+            </if>
+        </where>
+            <if test="limit!=null">
+                limit #{offset}, #{limit}
+            </if>
+    </select>
+    
+    <select id="queryById" resultType="order">
+        select * from orders
+        where orderId = #{orderId}
+    </select>
+
+    <insert id="addOrder" parameterType="order">
+        insert into orders(orderId,manufacturerId,creatTime,totalTime,
+        deposit,orderType,sumMoney,nextPay,billMethod)
+        values (null,#{manufacturerId},
+        #{creatTime},#{totalTime},#{deposit},#{orderType},#{sumMoney}
+        ,#{nextPay},#{billMethod})
+    </insert>
+
+    <update id="updateOrder" parameterType="order">
+        update orders
+        <set>
+            <if test="status!=null">
+                status = #{status},
+            </if>
+            <if test="finishTime!=null">
+                finishTime = #{finishTime},
+            </if>
+            <if test="currTime!=null">
+                currTime = #{currTime},
+            </if>
+            <if test="actualPay!=null">
+                actualPay = #{actualPay},
+            </if>
+            <if test="finishTime!=null">
+                finishTime = #{finishTime},
+            </if>
+            <if test="deposit!=null">
+                deposit = #{deposit},
+            </if>
+            <if test="orderType!=null">
+                orderType = #{orderType},
+            </if>
+            <if test="nextPay!=null">
+                nextPay = #{nextPay},
+            </if>
+            <if test="billMethod!=null">
+                billMethod = #{billMethod},
+            </if>
+            <if test="totalTime!=null">
+                totalTime = #{totalTime},
+            </if>
+            <if test="sumMoney!=null">
+                sumMoney = #{sumMoney},
+            </if>
+            <if test="comment!=null">
+                comment = #{comment}
+            </if>
+        </set>
+        where orderId = #{orderId}
+    </update>
+</mapper>

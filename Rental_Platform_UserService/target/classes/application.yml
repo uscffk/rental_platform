@@ -1,21 +1,32 @@
 #端口号配置
 server:
-  port: 8001
+  port: 8010
 
 #mybatis配置
 mybatis:
   type-aliases-package: com.ffk.pojo
   #spring配置
-  mapper-locations: classpath:mybatis/mapper/commodityMapper.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  config-location: classpath:mybatis/mybatis-config.xml
 spring:
   application:
     name: UserService
   datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
+    #type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/commodity?useUnicode=true&CharacterEncoding=utf-8
+    url: jdbc:mysql://localhost:3306/user?useUnicode=true&CharacterEncoding=utf-8&useSSL=false
     username: root
-    password: ffk123
+    password: 123456
+
+  cloud:
+      alibaba:
+        seata:
+          tx-service-group: rent_tx_group
+  servlet:
+    multipart:
+      enabled: false
+
+
 
 #Eureka的配置 配置服务注册到哪里  defaultZone是一个请求，表示服务注册
 eureka:
@@ -23,4 +34,15 @@ eureka:
     service-url:
       defaultZone: http://localhost:7001/eureka/
   instance:
-    instance-id: CommodityService-8001
+    instance-id: UserService-8010
+
+hystrix:
+  dashboard:
+    proxy-stream-allow-list: "localhost"
+
+# 度量指标监控与健康检查
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream

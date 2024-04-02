@@ -38,7 +38,7 @@ public class SwaggerConfig {
         Contact contact = new Contact("ffk","ffk.com" ,"1253308618@qq.com" );
         return new ApiInfo(
                 "ffk的SwaggerAPI文档",
-                "库存服务",
+                "用户服务",
                 "v1.0",
                 "http:",
                 contact,

@@ -5,35 +5,56 @@
     <select id="queryCommodity" parameterType="map" resultMap="getCategory">
         select * from goods
         <where>
+            <if test="id!=null">
+                id = #{id}
+            </if>
             <if test="name!=null">
-                name = #{name}
+                AND name like concat('%',#{name},'%')
             </if>
             <if test="rentBeforeBuy!=null">
-                AND rent_before_buy = #{rentBeforeBuy}
+                AND rentBeforeBuy = #{rentBeforeBuy}
             </if>
             <if test="rentForSale!=null">
-                AND rent_for_sale = #{rentForSale}
+                AND rentForSale = #{rentForSale}
             </if>
             <if test="sharingRent!=null">
-                AND sharing_rent = #{sharingRent}
+                AND sharingRent = #{sharingRent}
             </if>
-            <if test="longitude!=null">
-                AND longitude = #{longitude}
+            <if test="detailLoc!=null">
+                AND detailLoc = #{detailLoc},
             </if>
-            <if test="latitude!=null">
-                AND latitude = #{latitude}
-            </if>
-            <if test="status!=null">
-                AND status = #{status}
-            </if>
-            <if test="manufacturer!=null">
-                AND manufacturer = #{manufacturer}
+            <if test="manufacturerId!=null">
+                AND manufacturerId = #{manufacturerId}
             </if>
             <if test="category!=null">
                 AND category =  #{category}
             </if>
+            <if test="rentOwnershipnft!=null">
+                AND rentOwnershipnft = #{rentOwnershipnft}
+            </if>
+            <if test="billMethod!=null">
+                AND billMethod = #{billMethod}
+            </if>
+            <if test="deposit!=null">
+                AND deposit = #{deposit}
+            </if>
+            <if test="auctionAddress!=null">
+                AND auctionAddress = #{auctionAddress}
+            </if>
         </where>
+        <if test="limit!=null">
+            limit #{startIndex}, #{limit}
+        </if>
 
+    </select>
+
+    <select id="getAllAuctionAddress">
+        select auctionAddress from goods
+    </select>
+
+    <select id="queryById" resultMap="getCategory">
+        select * from goods
+        where id = #{id}
     </select>
 
     <resultMap id="getCategory" type="commodity">
@@ -44,12 +65,74 @@
     </select>
 
     <insert id="addCommodity" parameterType="commodity">
-        insert into goods (id,name,rent_price,sell_price,manufacturer,category,picture,discription,
-        sharing_rent,rent_before_buy,rent_for_sale,longitude,latitude,detail_loc,bill_method,status)
-        VALUES (null,#{name},#{rentPrice},#{sellPrice},#{manufacturer},#{category},#{picture},#{discription},
-        #{sharingRent},#{rentBeforeBuy},#{rentForSale},#{longitude},#{latitude},#{detailLoc},#{billMethod},
-        #{status})
+        insert into goods (id,name,rentPrice,sellPrice,category,picture,discription,
+        sharingRent,rentBeforeBuy,rentForSale,detailLoc,billMethod,timeNumber,deposit,rentOwnershipnft,auctionAddress,manufacturerId)
+        VALUES (null,#{name},0,0,#{category},'default.jpg','',
+        0,0,0,#{detailLoc},0,
+        0,0,#{rentOwnershipnft},#{auctionAddress},0)
     </insert>
+    
+    <update id="updateCommodity" parameterType="commodity">
+        update goods
+        <set>
+            <if test="name!=null">
+                name = #{name},
+            </if>
+            <if test="rentPrice!=null">
+                rentPrice = #{rentPrice},
+            </if>
+            <if test="sellPrice!=null">
+                sellPrice = #{sellPrice},
+            </if>
+            <if test="manufacturerId!=null">
+                manufacturerId = #{manufacturerId},
+            </if>
+            <if test="category!=null">
+                category = #{category},
+            </if>
+            <if test="picture!=null">
+                picture = #{picture},
+            </if>
+            <if test="discription!=null">
+                discription = #{discription},
+            </if>
+            <if test="sharingRent!=null">
+                sharingRent = #{sharingRent},
+            </if>
+            <if test="rentBeforeBuy!=null">
+                rentBeforeBuy = #{rentBeforeBuy},
+            </if>
+            <if test="rentForSale!=null">
+                rentForSale = #{rentForSale},
+            </if>
+            <if test="detailLoc!=null">
+                detailLoc = #{detailLoc},
+            </if>
+            <if test="billMethod!=null">
+                billMethod = #{billMethod},
+            </if>
+            <if test="timeNumber!=null">
+                timeNumber = #{timeNumber},
+            </if>
+            <if test="deposit!=null">
+                deposit = #{deposit}
+            </if>
+            where id = #{id}
+        </set>
+    </update>
 
+    <update id="updateManufacturerId">
+        update goods set manufacturerId = #{manufacturerId}
+        where id = #{id}
+    </update>
+
+    <select id="getTotal"  resultType="java.lang.Integer">
+        select count(*) from goods;
+    </select>
+
+
+    <select id="queryCommodityIdByMId" resultType="java.lang.Integer">
+        select id from goods where manufacturerId = #{mid}
+    </select>
 
 </mapper>

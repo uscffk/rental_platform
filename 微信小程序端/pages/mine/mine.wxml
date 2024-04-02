@@ -1,0 +1,99 @@
+<import src="/common/copyright/copyright" />
+
+<view class="container">
+<!-- 已登录展示头像 -->
+  <view class="userinfo" wx:if="{{userinfo.username}}">
+    <image class="avatar" wx:if="{{userinfo.userhead}}"  src="{{imagePrefix}}userService/upload/userhead/{{userinfo.userhead}}"></image>
+    <view class="nickname">
+      <text>{{userinfo.username}}</text>
+    </view>
+    <view class="nickname" bindtap="loginOut">
+    <button style="width: 80px;font-size: 10px">
+      退出登录
+    </button>
+    </view>
+  </view>
+<!-- 未登录时显示登录按钮 -->
+<view wx:else class="user_btn">
+  <image class="avatar" wx:if="{{userinfo.userhead}}" src="{{imagePrefix}}userService/upload/userhead/{{userinfo.userhead}}"></image>
+    <view class="nickname">
+      <navigator url="/pages/login/login" ><button class="login">您好,点击登录</button></navigator>
+    </view>
+</view>
+
+  <view class="zan-panel">
+    <view class="zan-cell zan-cell--access" bindtap="goOrder">
+      <view class="zan-cell__bd">我的订单</view>
+      <view class="zan-cell__ft">查看全部订单</view>
+    </view>
+  </view>
+
+  <view class="zan-panel">
+    <view class="zan-cell" style="padding-left: 0px;">
+      <view class="zan-cell__bd order_icons">
+        <view class="icon" bindtap="sharingrent">
+          <image style="width:50px;height:50px" src="../../images/_租赁业 .png"></image>
+          <text>共享租赁</text>
+        </view>
+        <view class="icon" bindtap="rentbeforebuy">
+          <image style="width:50px;height:50px" src="../../images/租赁1.png"></image>
+          <text>先租后买</text>
+        </view>
+        <view class="icon" bindtap="rentforsale">
+          <image style="width:50px;height:50px" src="../../images/租赁2.png"></image>
+          <text>以租代售</text>
+        </view>
+        <view class="icon" bindtap="expenseRecord">
+          <image style="width:50px;height:50px" src="../../images/租赁费用出账.png"></image>
+          <text>消费记录</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="zan-panel">
+    <!-- 购物车 -->
+    <view class="zan-cell zan-cell--access" bindtap="goCart">
+      <view class="zan-cell__bd order_item">
+        <text>我的收藏</text>
+        <view class="my-badge" hidden="{{!cartGoodCount}}">{{cartGoodCount}}</view>
+      </view>
+      <view class="zan-cell__ft"></view>
+    </view>
+    <!-- 个人信息 -->
+    <view class="zan-cell zan-cell--access" bindtap="goUserInfo">
+      <view class="zan-cell__bd order_item">
+        <text>个人信息</text>
+        <view class="my-badge" hidden="{{!cartGoodCount}}">{{cartGoodCount}}</view>
+      </view>
+      <view class="zan-cell__ft"></view>
+    </view>
+
+    <view class="zan-cell zan-cell--access" bindtap="goDeposit">
+      <view class="zan-cell__bd order_item">
+        <text>我的押金</text>
+      </view>
+      <view class="zan-cell__ft"></view>
+    </view>
+
+    <!-- 余额 -->
+    <view class="zan-cell zan-cell--access" bindtap="goRecharge">
+      <view class="zan-cell__bd order_item">
+        <text>充值与提现</text>
+        <view class="my-badge" hidden="{{!cartGoodCount}}">{{cartGoodCount}}</view>
+      </view>
+      <view class="zan-cell__ft"></view>
+    </view>
+    <!-- 意见反馈 -->
+    <view class="zan-cell zan-cell--access" bindtap="gofeedback">
+      <view class="zan-cell__bd order_item">
+        <text>意见反馈</text>
+        <view class="my-badge" hidden="{{!cartGoodCount}}">{{cartGoodCount}}</view>
+      </view>
+      <view class="zan-cell__ft"></view>
+    </view>
+
+  </view>
+
+
+</view>

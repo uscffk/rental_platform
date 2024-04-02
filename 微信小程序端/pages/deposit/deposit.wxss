@@ -1,0 +1,87 @@
+.item {
+  height: 200rpx;
+  margin-top: 20rpx;
+  overflow: hidden;
+  width: 96%;
+  margin-left: 2%;
+  border-bottom: 1px rgb(204, 198, 198) solid;
+}
+
+.item .lt {
+  float: left;
+  width: 200rpx;
+}
+
+.item .lt image {
+  width: 180rpx;
+  height: 160rpx;
+  margin-top: 30rpx;
+  margin-left: 10rpx;
+}
+
+.item .rt {
+  width: 680rpx;
+  height: 180rpx;
+  margin-top: 20rpx;
+}
+
+.item .rt .name {
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 26rpx;
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient: horizontal;
+  -webkit-line-clamp: 1;
+}
+.line{
+  width: 100%;
+  margin-top: 20rpx;
+  border-top:1px solid;
+  }
+.item .rt .xinghao {
+  line-height: 40rpx;
+  height: 40rpx;
+}
+
+.item .rt .price {
+  line-height: 40rpx;
+  height: 40rpx;
+}
+
+.price .money {
+  color: rgb(22, 20, 20);
+  font-weight: bold;
+  font-size: 26rpx;
+}
+
+.search {
+  width: 80%;
+  height: 60rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  overflow: hidden;
+  margin: 0 auto;
+  margin-top: 30rpx;
+}
+
+.search button {
+  float: right;
+  width: 30%;
+  border: 0;
+  height: 62rpx;
+  font-size: 24rpx;
+  line-height: 62rpx;
+  color: #fff;
+}
+
+.search input {
+  width: 60%;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 24rpx;
+  margin-left: 5%;
+  float: left;
+}

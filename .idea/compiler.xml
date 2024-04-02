@@ -2,10 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-<<<<<<< HEAD
       <profile default="true" name="Default" enabled="true" />
-=======
->>>>>>> bc91416171e3b3f0d6234439f03ae92b8063762d
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -14,36 +11,36 @@
         <module name="Rental_Platform_Payment" />
         <module name="Rental_Platform_Zuul" />
         <module name="Rental_Platform_BusinessService" />
+        <module name="depoly" />
         <module name="Rental_Platform_Config_Server" />
         <module name="Rental_Platform_CommonApi" />
-<<<<<<< HEAD
         <module name="Rental_Platform_RentService" />
         <module name="Rental_Platform_Commodity" />
         <module name="Rental_Platform_depositService" />
-        <module name="Test" />
-        <module name="Rental_Platform_backService" />
         <module name="Rental_Platform_StockService" />
-=======
-        <module name="Rental_Platform_CommodityService" />
-        <module name="Rental_Platform_RentService" />
-        <module name="Rental_Platform_Commodity" />
-        <module name="Rental_Platform_depositService" />
         <module name="Rental_Platform_backService" />
->>>>>>> bc91416171e3b3f0d6234439f03ae92b8063762d
         <module name="Rental_Platform_OrderService" />
         <module name="Rental_Platform_UserService" />
         <module name="Rental_Platform_PlatformService" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-<<<<<<< HEAD
-      <module name="Rental_Platform_CommodityService" target="1.5" />
-=======
-      <module name="Rental_Platform_Commodity" target="1.5" />
-      <module name="Rental_Platform_CommodityService" target="1.5" />
-      <module name="Rental_Platform_PlatformService" target="1.5" />
-      <module name="Test" target="8" />
->>>>>>> bc91416171e3b3f0d6234439f03ae92b8063762d
+      <module name="depoly" target="8" />
+      <module name="Rental_Platform" target="1.5" />
+      <module name="Rental_Platform_backService" target="8" />
+      <module name="Rental_Platform_BusinessService" target="8" />
+      <module name="Rental_Platform_Commodity" target="7" />
+      <module name="Rental_Platform_CommonApi" target="8" />
+      <module name="Rental_Platform_Config_Server" target="1.5" />
+      <module name="Rental_Platform_depositService" target="8" />
+      <module name="Rental_Platform_Eureka" target="1.5" />
+      <module name="Rental_Platform_OrderService" target="8" />
+      <module name="Rental_Platform_Payment" target="7" />
+      <module name="Rental_Platform_PlatformService" target="8" />
+      <module name="Rental_Platform_RentService" target="8" />
+      <module name="Rental_Platform_StockService" target="6" />
+      <module name="Rental_Platform_UserService" target="7" />
+      <module name="Rental_Platform_Zuul" target="6" />
     </bytecodeTargetLevel>
   </component>
 </project>

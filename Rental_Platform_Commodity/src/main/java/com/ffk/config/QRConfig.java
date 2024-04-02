@@ -24,7 +24,7 @@ public class QRConfig {
         qrConfig.setForeColor(Color.BLACK.getRGB());
         //设置背景色
         qrConfig.setBackColor(Color.WHITE.getRGB());
-
+        //返回二维码配置
         return qrConfig;
     }
 }

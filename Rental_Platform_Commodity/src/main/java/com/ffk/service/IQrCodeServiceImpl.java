@@ -19,6 +19,11 @@ public class IQrCodeServiceImpl implements IQrCodeService{
     @Autowired
     private QrConfig config;
 
+    /**
+     * 创建到文件
+     * @param content
+     * @param filePath
+     */
     @Override
     public void createCodeToFile(String content, String filePath) {
         try {
@@ -29,6 +34,11 @@ public class IQrCodeServiceImpl implements IQrCodeService{
         }
     }
 
+    /**
+     * 以流的形式返回
+     * @param content
+     * @param response
+     */
     @Override
     public void createCodeToStream(String content, HttpServletResponse response) {
         try {

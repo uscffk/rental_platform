@@ -1,0 +1,30 @@
+
+<view class="container">
+    <view>
+        <view class="chat_list" wx:for="{{commentList}}" wx:key="user">
+            <view class="chat_face">
+                <image src="../../images/comments.webp"/>
+            </view>
+            <view class="chat_words">
+                <view class="chat_meta">
+                    <text class="chat_user">{{'name'}}</text>
+                    <text class="chat_date">{{item.time}}</text>
+                </view>
+                <view class="content">{{item.content}}</view>
+          
+                <view style="float: right;" data-key="{{item.id}}" bindtap="addAgree"><image style="width:10px;height:10px" src="../../images/zhichi.png"></image>{{item.agree}}</view>
+               
+                <view style="float: right;" data-key="{{item.id}}" bindtap="addDeny"><image style="width:10px;height:10px" src="../../images/buzhichi.png"></image>{{item.deny}}</view>
+        
+                <view>是否上链:{{item.upchain==0?'否':'是'}}</view>
+            </view>
+        </view>
+    </view>
+  
+    <view class="send_msg" wx:if="{{needComment==1}}">
+        <form bindreset="foo" bindsubmit="submitComment">
+            <input placeholder="在这里输入您要说的话" class="send_ipt" name='comment'/>
+            <button type="primary" form-type="submit" class="send_btn">发布</button>   
+        </form>   
+    </view> 
+</view>

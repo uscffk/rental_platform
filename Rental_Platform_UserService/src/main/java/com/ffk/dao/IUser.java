@@ -1,9 +1,8 @@
 package com.ffk.dao;
 
 import com.ffk.pojo.Users;
-import org.apache.catalina.User;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 import java.util.Map;
 
@@ -36,14 +35,35 @@ public interface IUser {
 
     /**
      * 查找用户
+     * @param  map
      * @return
      */
     List<Users> queryUsers(Map map);
 
     /**
-     * 根据合约地址查询信用积分
-     * @param contractAddress
+     * 登录
+     * @param username
      * @return
      */
-    int queryCreditscore(String contractAddress);
+    Users login(String username);
+
+    /**
+     * 按Id查询
+     * @param id
+     * @return
+     */
+    Users queryById(@Param(value = "id") int id);
+
+    /**
+     * 查询用户数量
+     * @return
+     */
+    int queryTotal();
+
+    /**
+     * 按地址查询
+     * @param address
+     * @return
+     */
+    Users queryByAddress(@Param(value = "address") String address);
 }

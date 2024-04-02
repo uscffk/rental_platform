@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ffk.dao.IPlatform">
+
+    <select id="queryPlatform" parameterType="string" resultType="platform">
+        select * from platforms
+        where username = #{username}
+    </select>
+</mapper>

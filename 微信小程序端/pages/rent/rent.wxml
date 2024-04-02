@@ -1,0 +1,112 @@
+<import src="../../wxParse/wxParse.wxml" />
+<import src="../../dist/quantity/index.wxml" />
+<import src="/dist/toptips/index.wxml" />
+
+<view class="container">
+<!-- 图片 这本来是个轮播图的 我不想搞了 就用一张图片就好 毕竟面对面租赁 都看得到实物的 -->
+<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <swiper-item>
+        <image wx:if="{{goodsObj[0].commodity.picture}}" src="{{imagePrefix}}commodityService/upload/imgs/{{goodsObj[0].commodity.picture}}" class="slide-image" />
+      </swiper-item>
+</swiper>
+
+<!-- 商品名称 单期价格  -->
+<view class="zan-panel"  style="color:rgb(204,0,1)">
+    <view style="padding: 15px;">
+      <text class="title" style="font-size:18px">{{goodsObj[0].commodity.name}}</text>
+      <text class="new">￥{{goodsObj[0].commodity.rentForSale==1?'分期支付/总价'+goodsObj[0].commodity.sellPrice:goodsObj[0].commodity.rentPrice}}</text>
+      <text class="old">/{{goodsObj[0].commodity.billMethod==0?'小时':goodsObj[0].commodity.billMethod==1?'天':'月'}}</text>
+      <text wx:if="{{goodsObj[0].commodity.rentBeforeBuy==1}}">支持先租后买</text>
+    </view>
+</view>
+
+<view class="zan-panel select-wrap">
+     <!-- NFT ID -->
+    <view class="zan-cell zan-cell--access" bindtap="toggleDialog">
+      <view class="select">NFT ID</view>
+      <view class="zan-cell__bd">
+        <view class="">{{goodsObj[0].nftTokenId}}</view>
+      </view>
+      <view class="icon"></view>
+    </view>
+
+    <!-- 商品分类 -->
+    <view class="zan-cell zan-cell--access" bindtap="toggleDialog">
+      <view class="select">分类</view>
+      <view class="zan-cell__bd">
+        <view class="">{{goodsObj[0].commodity.categories.name}}</view>
+      </view>
+      <view class="icon"></view>
+    </view>
+    <!--厂商 -->
+    <view class="zan-cell zan-cell--access" bindtap="toggleDialog">
+      <view class="select">厂商</view>
+      <view class="zan-cell__bd">
+        <view class="">{{goodsObj[0].commodity.manufacturers.name}}</view>
+      </view>
+      <view class="icon"></view>
+    </view>
+<!-- 商品租赁模式 -->
+    <view class="zan-cell zan-cell--access" bindtap="toggleDialog">
+      <view class="select">租赁模式</view>
+      <view class="zan-cell__bd">
+        <view class="">{{goodsObj[0].commodity.sharingRent==1?'共享租赁':goodsObj[0].commodity.rentBeforeBuy==1?'先租后买':'以租代售'}}</view>
+      </view>
+      <view class="icon"></view>
+    </view>
+    <!-- 所需押金 -->
+    <view class="zan-cell zan-cell--access" bindtap="toggleDialog">
+      <view class="select">所需押金</view>
+      <view class="zan-cell__bd">
+        <view class="">{{goodsObj[0].commodity.deposit==0?'免押':goodsObj[0].commodity.deposit}}</view>
+      </view>
+      <view class="icon"></view>
+    </view>
+<!-- 售出金额 -->
+    <view class="zan-cell zan-cell--access" wx:if="{{goodsObj[0].commodity.rentBeforeBuy==1}}">
+      <view class="select">售出金额</view>
+      <view class="zan-cell__bd">
+        <view class="">{{goodsObj[0].commodity.sellPrice}}</view>
+      </view>
+      <view class="icon"></view>
+    </view>
+    <!-- 计费方式 -->
+    <view class="zan-cell zan-cell--access" bindtap="toggleDialog">
+      <view class="select">计费方式</view>
+      <view class="zan-cell__bd">
+        <view class="">{{goodsObj[0].commodity.billMethod==0?'按小时':goodsObj[0].commodity.billMethod==1?'按天':'按月'}}</view>
+      </view>
+      <view class="icon"></view>
+    </view>
+    <!-- 商品状态 -->
+    <view class="zan-cell zan-cell--access" bindtap="toggleDialog">
+      <view class="select">状态</view>
+      <view class="zan-cell__bd">
+        <view class="">{{goodsObj[0].status==0?'空闲中':goodsObj[0].status==1?'维护中':goodsObj[0].status==2?'使用中':'已售出'}}</view>
+      </view>
+      <view class="icon"></view>
+    </view>
+    <!--商品评价-->
+    <view class="zan-cell zan-cell--access" bindtap="goComments">
+      <view class="select">查看评价</view>
+      <view class="icon"></view>
+    </view>
+  </view>
+    <!--商品详情-->
+  <view class="zan-panel">
+    <view style="padding: 10px 0;">
+      <view class="zan-panel-title detailtitle">商品详情<text>\n\n</text>{{goodsObj[0].commodity.discription}}</view>
+      <!-- 其实商品详情可以存html文档 我懒得去搞了 纯文字就好-->
+    </view>
+  </view>
+
+</view>
+    <!-- 底部操作栏 -->
+  <view class="bot-bar">
+  <view class="bot-bar-btn">
+    <view class="left" bindtap="goOrder" data-gowhere="goOrder">立即下单</view>
+    <view class="right" bindtap="goIndex" data-key="{{goodsObj}}" data-detailLoc="{{goodsObj.detailLoc}}" data-latitude="{{goodsObj.latitude}}" data-longitude="{{goodsObj.longitude}}">我再想想</view>
+  </view>
+</view>
+
+<template is="zan-toptips" data="{{ zanTopTips }}"></template>

@@ -3,7 +3,8 @@ package com.ffk.pojo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.aspectj.lang.annotation.DeclareAnnotation;
+
+import java.util.List;
 
 /**
  * @author 房发科
@@ -28,4 +29,14 @@ public class CommodityCategory {
      * 种类描述
      */
     private String discription;
+
+    /**
+     * 是否被推荐
+     */
+    private int recommend;
+
+    /**
+     * 种类对应的商品
+     */
+    List<Commodity> commodityList;
 }

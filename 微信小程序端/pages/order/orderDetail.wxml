@@ -1,0 +1,93 @@
+ <!-- 订单信息 -->
+<view class="msg_list">
+
+<!-- 商品图片 -->
+<view class="msg_item">
+    <!-- <navigator class="cart_img_wrap"> -->
+    <image mode="widthFix" wx:if="{{order.commodity.picture}}" src="{{imagePrefix}}commodityService/upload/imgs/{{order.commodity.picture}}" ></image>
+    <!-- </navigator> -->
+</view>
+
+<!-- 订单编号 -->
+<view class="msg_item">
+    <view>订单编号:</view>
+    <view>{{order.orderId}}</view>
+</view>
+
+<!-- 订单类型 -->
+<view class="msg_item">
+    <view>订单类型:</view>
+    <view>{{order.orderType==0?'共享租赁订单':order.orderType==1?'以租代售订单':'先租后买订单'}}</view>
+</view>
+
+<!-- 商品 -->
+<view class="msg_item">
+    <view>商品名称:</view>
+    <view>{{order.commodity.name}}</view>
+</view>
+
+
+
+<!-- 最大期数 -->
+<view class="msg_item" wx:if="{{order.orderType==1}}">
+    <view>最大期数:</view>
+    <view>{{order.totalTime}}</view>
+</view>
+
+<!-- 当前期数 -->
+<view class="msg_item" wx:if="{{order.orderType==1}}">
+    <view>当前期数:</view>
+    <view>{{order.currTime}}</view>
+</view>
+
+<!-- 开始时间 -->
+<view class="msg_item">
+    <view>开始时间:</view>
+    <view>{{order.creatTime}}</view>
+</view>
+
+<!-- 结束时间 -->
+<view class="msg_item" wx:if="{{order.finishTime}}">
+    <view>完成时间:</view>
+    <view>{{order.finishTime}}</view>
+</view>
+
+
+<!-- 订单状态 -->
+<view class="msg_item">
+    <view>订单状态:</view>
+    <view>{{order.status==0?'进行中':order.status==1?'已完成':order.status==3?'黑名单':order.status==4?'已购买':'error'}}</view>
+</view>
+
+<!-- 总金额 -->
+<view class="msg_item">
+    <view>总金额:</view>
+    <view>￥{{order.sumMoney}}</view>
+</view>
+
+<!-- 已支付 -->
+<view class="msg_item">
+    <view>已支付:</view>
+    <view>￥{{order.actualPay}}</view>
+</view>
+
+<!-- 押金 -->
+<view class="msg_item">
+    <view>已支付押金:</view>
+    <view>￥{{order.deposit}}</view>
+</view>
+
+<!-- 下期扣款时间 -->
+<view class="msg_item" wx:if="{{order.orderType==1}}">
+    <view>下期扣款时间:</view>
+    <view>{{order.nextPay}}</view>
+</view>
+
+<!--计费方式 -->
+<view class="msg_item">
+    <view>计费方式</view>
+    <view>{{order.billMethod==0?'按小时':order.billMethod==1?'按天':'按月'}}</view>
+</view>
+
+
+</view>

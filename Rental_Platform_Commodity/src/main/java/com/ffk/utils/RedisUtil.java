@@ -17,7 +17,6 @@ public class RedisUtil {
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
 
-
     /***
      * 将指定的地理空间位置（纬度、经度、名称）添加到指定的key中。
      * @param key redis的key  具体业务中指的是商品名称
@@ -31,8 +30,15 @@ public class RedisUtil {
 //        Long addedNum = redisTemplate.opsForGeo().add("city", new Point(121.47, 31.23), "上海");
 //        Long addedNum = redisTemplate.opsForGeo().add("city", new Point(113.27, 23.13), "广州");
 //        params: key, Point(经度, 纬度), 具体位置信息
-        Long addedNum = redisTemplate.opsForGeo().add(key, new Point(longitude, latitude), name);
-        return addedNum;
+        try {
+            Long addedNum = redisTemplate.opsForGeo().add(key, new Point(longitude, latitude), name);
+            return addedNum;
+        }catch (Exception e){
+            e.printStackTrace();
+            return new Long(0);
+        }
+        //Long addedNum = redisTemplate.opsForGeo().add(key, new Point(longitude, latitude), name);
+        //return addedNum;
     }
 
     /***
@@ -47,6 +53,16 @@ public class RedisUtil {
     }
 
 
+    /***
+     * 从key里返回所有给定位置元素的位置（经度和纬度）。
+     * @param key redis的key
+     * @param nameList  名称的集合
+     */
+    public List<Point> redisGeoGet(String key, String ... nameList) {
+        //params: key, 具体位置信息...
+        List<Point> points = redisTemplate.opsForGeo().position(key, nameList);
+        return points;
+    }
     /***
      * 返回两个给定位置之间的距离。
      * @param key redis的key

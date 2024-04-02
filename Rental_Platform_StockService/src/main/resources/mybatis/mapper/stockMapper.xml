@@ -11,13 +11,23 @@
         delete from stocks where id = #{id}
     </delete>
 
+    <update id="updateStock" parameterType="stock">
+        update stocks
+        <set>
+            <if test="number!=null">
+                number = #{number}
+            </if>
+        </set>
+        where commodity_id = #{commodityId}
+    </update>
+
     <update id="addStock">
-        update stocks set number += #{count}
+        update stocks set number = number+#{count}
         where commodity_id = #{commodityId}
     </update>
 
     <update id="decreaseStock">
-        update stocks set number -= #{count}
+        update stocks set number = number-#{count}
         where commodity_id = #{commodityId}
     </update>
 

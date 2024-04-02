@@ -2,8 +2,23 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Rental_Platform.iml" filepath="$PROJECT_DIR$/Rental_Platform.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Rental_Platform_BusinessService/Rental_Platform_BusinessService.iml" filepath="$PROJECT_DIR$/Rental_Platform_BusinessService/Rental_Platform_BusinessService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Rental_Platform_Commodity/Rental_Platform_Commodity.iml" filepath="$PROJECT_DIR$/Rental_Platform_Commodity/Rental_Platform_Commodity.iml" />
       <module fileurl="file://$PROJECT_DIR$/Rental_Platform_CommodityService/Rental_Platform_CommodityService.iml" filepath="$PROJECT_DIR$/Rental_Platform_CommodityService/Rental_Platform_CommodityService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Rental_Platform_CommonApi/Rental_Platform_CommonApi.iml" filepath="$PROJECT_DIR$/Rental_Platform_CommonApi/Rental_Platform_CommonApi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Rental_Platform_Config_Server/Rental_Platform_Config_Server.iml" filepath="$PROJECT_DIR$/Rental_Platform_Config_Server/Rental_Platform_Config_Server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Rental_Platform_Eureka/Rental_Platform_Eureka.iml" filepath="$PROJECT_DIR$/Rental_Platform_Eureka/Rental_Platform_Eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Rental_Platform_OrderService/Rental_Platform_OrderService.iml" filepath="$PROJECT_DIR$/Rental_Platform_OrderService/Rental_Platform_OrderService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Rental_Platform_Payment/Rental_Platform_Payment.iml" filepath="$PROJECT_DIR$/Rental_Platform_Payment/Rental_Platform_Payment.iml" />
       <module fileurl="file://$PROJECT_DIR$/Rental_Platform_PlatformService/Rental_Platform_PlatformService.iml" filepath="$PROJECT_DIR$/Rental_Platform_PlatformService/Rental_Platform_PlatformService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Rental_Platform_RentService/Rental_Platform_RentService.iml" filepath="$PROJECT_DIR$/Rental_Platform_RentService/Rental_Platform_RentService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Rental_Platform_StockService/Rental_Platform_StockService.iml" filepath="$PROJECT_DIR$/Rental_Platform_StockService/Rental_Platform_StockService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Rental_Platform_UserService/Rental_Platform_UserService.iml" filepath="$PROJECT_DIR$/Rental_Platform_UserService/Rental_Platform_UserService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Rental_Platform_Zuul/Rental_Platform_Zuul.iml" filepath="$PROJECT_DIR$/Rental_Platform_Zuul/Rental_Platform_Zuul.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Rental_Platform_backService/Rental_Platform_backService.iml" filepath="$PROJECT_DIR$/Rental_Platform_backService/Rental_Platform_backService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Rental_Platform_depositService/Rental_Platform_depositService.iml" filepath="$PROJECT_DIR$/Rental_Platform_depositService/Rental_Platform_depositService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/depoly/depoly.iml" filepath="$PROJECT_DIR$/depoly/depoly.iml" />
     </modules>
   </component>
 </project>

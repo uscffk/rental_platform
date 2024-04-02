@@ -1,0 +1,44 @@
+<view id="total">
+<form bindsubmit="create_zhuce">
+
+<view style="line-height: 40px;text-align: center;background-color: rgb(51,204,170);color: white">
+基于NFT的智能共享租赁平台
+</view>
+
+<view id="t1">
+<text>用户名</text><input type="text" id="pass3" placeholder="您的用户名" name='username' value="{{username}}"></input>
+</view>
+
+<view id="t2">
+<text>密码</text><input type="password" id="pass3" placeholder="您的密码" name='password' value="{{password}}"></input>
+</view>
+
+<view id="t3">
+<text>身份证</text><input id="pass2" placeholder="身份证" name='identity' value="{{identity}}"></input>
+</view>
+
+<view id="t4">
+<text>真实姓名</text><input type="password" id="pass3" name='realName' placeholder="真实姓名" value="{{realName}}"></input>
+</view>
+
+<view id="t4">
+<text>邮箱</text><input id="pass3" placeholder="邮箱" name='email' value="{{email}}"></input>
+</view>
+
+<view id="t4">
+<text>电话</text><input id="pass3" placeholder="联系方式" name='phone' value="{{phone}}"></input>
+</view>
+
+<view id="t4">
+<text>省份</text><input id="pass3" placeholder="省份" name='province' value="{{province}}"></input>
+</view>
+
+<view id="t4">
+<text>城市</text><input id="pass3" placeholder="城市" name='city' value="{{city}}"></input>
+</view>
+
+
+<button id="btn1" form-type="submit"><text>注册</text></button>
+</form>
+
+</view>

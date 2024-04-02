@@ -8,7 +8,6 @@ import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
 import java.util.ArrayList;
 
 /**
@@ -38,7 +37,7 @@ public class SwaggerConfig {
         Contact contact = new Contact("ffk","ffk.com" ,"1253308618@qq.com" );
         return new ApiInfo(
                 "ffk的SwaggerAPI文档",
-                "订单服务",
+                "平台服务",
                 "v1.0",
                 "http:",
                 contact,

@@ -3,6 +3,53 @@ server:
 spring:
   application:
     name: Rental_Platform_Zuul
+#配置超时
+ribbon:
+  ConnectTimeout: 60000 # 连接超时时间(ms)
+  ReadTimeout: 60000 # 通信超时时间(ms)
+hystrix:
+  command:
+    default:
+    execution:
+    isolation:
+    thread:
+    timeoutInMilliseconds: 70000 # 设置hystrix的超时时间为6000ms
+
+zuul:
+  routes:
+    backService.serviceId: BackService
+    backService.path: /backService/**
+
+    businessService.serviceId: BusinessService
+    businessService.path: /businessService/**
+
+    commodityService.serviceId: CommodityService
+    commodityService.path: /commodityService/**
+
+    depositService.serviceId: DepositService
+    depositService.path: /depositService/**
+
+    orderService.serviceId: OrderService
+    orderService.path: /orderService/**
+
+    paymentService.serviceId: PaymentService
+    paymentService.path: /paymentService/**
+
+    platformService.serviceId: PlatformService
+    platformService.path: /platformService/**
+
+    rentService.serviceId: RentService
+    rentService.path: /rentService/**
+
+    stockService.serviceId: StockService
+    stockService.path: /stockService/**
+
+    userService.serviceId: UserService
+    userService.path: /userService/**
+  sensitive-headers: Access-Control-Allow-Origin
+  ignored-headers: Access-Control-Allow-Origin,H-APP-Id,Token,APPToken
+
+
 
 
 eureka:

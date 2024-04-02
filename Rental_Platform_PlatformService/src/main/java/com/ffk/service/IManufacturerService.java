@@ -1,0 +1,33 @@
+package com.ffk.service;
+
+import com.ffk.pojo.CommonResult;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Map;
+
+/**
+ * @author 房发科
+ * @date 2021/3/9 23:42
+ */
+@FeignClient(value = "BusinessService")
+public interface IManufacturerService {
+
+    /**
+     * 查询厂商
+     * @param map
+     * @return
+     */
+    @RequestMapping(value = "/manufacturer/query",method = RequestMethod.POST)
+    CommonResult queryManufacturer(@RequestBody Map map);
+
+    @RequestMapping(value = "/manufacturer/queryTotal",method = RequestMethod.POST)
+    CommonResult queryTotal();
+
+    @RequestMapping(value = "/manufacturer/queryById",method = RequestMethod.POST)
+    CommonResult queryManufacturerById(@RequestParam(value = "manufacturerId") int manufacturerId);
+
+}

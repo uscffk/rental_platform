@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ffk.dao.IBackLocation">
+
+   <select id="queryAll" resultType="backLocation">
+        select * from backlocation
+   </select>
+
+   <select id="queryById" resultType="backLocation">
+      select * from backlocation
+        where commodityId = #{id}
+   </select>
+
+   <update id="updateBackLocation" parameterType="backLocation">
+      update backlocation set
+        longitude = #{longitude},
+        latitude = #{latitude},
+        detailLoc = #{detailLoc}
+   </update>
+
+   <delete id="deleteBackLocation">
+      delete from backlocation where id = #{id}
+   </delete>
+
+   <insert id="addBackLocation" parameterType="backLocation">
+      insert into backlocation (id,commodityId, longitude, latitude,detailLoc)
+      VALUES (null,#{commodityId},#{longitude},#{latitude},#{detailLoc})
+   </insert>
+
+
+    <select id="queryByPkeyId" resultType="backLocation">
+        select * from backlocation
+        where id = #{id}
+    </select>
+
+
+</mapper>

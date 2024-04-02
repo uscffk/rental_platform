@@ -3,8 +3,8 @@ package com.ffk.pojo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
-import javax.annotation.sql.DataSourceDefinition;
 import java.io.Serializable;
 
 /**
@@ -14,6 +14,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Accessors(chain = true)//可以链式操作，默认是false
 /**
  * 返回给前端的通用JSON串
  */
@@ -26,4 +27,5 @@ public class CommonResult<T> implements Serializable {
     public CommonResult(Integer code,String message){
         this(code,message,null);
     }
+
 }

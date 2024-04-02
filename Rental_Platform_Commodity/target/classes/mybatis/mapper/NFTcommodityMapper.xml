@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ffk.dao.INFTCommodity">
+
+    <insert id="addNFTCommodity" parameterType="NFTCommodity">
+        insert into commodity(nftTokenId, longitude, latitude, detailLoc, goodsId, status)
+        VALUES (#{nftTokenId},#{longitude},#{latitude},#{detailLoc},#{goodsId},#{status})
+
+    </insert>
+
+    <select id="queryNFTCommodity" parameterType="map" resultType="NFTCommodity">
+        select * from commodity
+        <where>
+            <if test="nftTokenId!=null">
+                 nftTokenId = #{nftTokenId}
+            </if>
+            <if test="longitude!=null">
+                AND longitude = #{longitude}
+            </if>
+            <if test="latitude!=null">
+                AND latitude = #{latitude}
+            </if>
+            <if test="detailLoc!=null">
+                AND detailLoc = #{detailLoc}
+            </if>
+            <if test="goodsId!=null">
+                AND goodsId = #{goodsId}
+            </if>
+            <if test="status!=null">
+                AND status = #{status}
+            </if>
+            <if test="limit!=null">
+                limit #{offset}, #{limit}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryByCommodityId" resultType="NFTCommodity">
+        select * from commodity where goodsId = #{id}
+    </select>
+
+    <update id="updateNFTCommodity" parameterType="NFTCommodity">
+        update commodity set
+        latitude = #{latitude},
+        longitude = #{longitude},
+        detailLoc = #{detailLoc},
+        status = #{status}
+        where nftTokenId = #{nftTokenId}
+    </update>
+
+    <select id="queryByNftId" resultType="NFTCommodity">
+        select * from commodity where nftTokenId = #{nftId}
+    </select>
+
+</mapper>

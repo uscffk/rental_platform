@@ -1,0 +1,73 @@
+<view class='basicinfo'>
+  <view class='basicinfo-avatar'>
+<image style="width: 80px; height: 80px" wx:if="{{userInfo.userhead}}" src="{{imagePrefix}}userService/upload/userhead/{{userInfo.userhead}}"></image>
+  </view>
+
+  <view>{{userInfo.username}}</view>
+</view>
+
+<view class='moreinfo'>
+  <view class='moreinfo-block'>
+    <navigator class='moreinfo-item'>
+      <text class='moreinfo-left'><text class="iconfont icon-yonghuxingshi"></text>姓名</text>
+      <text class='moreinfo-right'>{{userInfo.realName}}</text>
+    </navigator>
+
+    <view class="line"></view>
+    <navigator class='moreinfo-item' url="./userModify?type=gender&value={{userInfo.gender}}" open-type="navigate">
+      <text class='moreinfo-left'><text class="iconfont icon-xingbie"></text>性别</text>
+      <text class='moreinfo-right'>{{userInfo.sex==0?'男':'女'}}</text>
+    </navigator>
+
+    <view class="line"></view>
+    <navigator class='moreinfo-item' url="./userModify?type=phone&value={{userInfo.phone}}" open-type="navigate">
+      <text class='moreinfo-left'><text class="iconfont icon-phone"></text>手机号码</text>
+      <text class='moreinfo-right'>{{userInfo.phone}}</text>
+    </navigator>
+
+    <view class="line"></view>
+
+    <navigator class='moreinfo-item' url="./userPicture?value={{userInfo.state}}" open-type="navigate">
+      <text class='moreinfo-left'><text class="iconfont icon-state"></text>省份</text>
+      <text class='moreinfo-right'>{{userInfo.province}}</text>
+    </navigator>
+
+    <view class="line"></view>
+
+    <view class='moreinfo-item'>
+      <text class='moreinfo-left'><text class="iconfont icon-shijian"></text>城市</text>
+      <text class='moreinfo-right'>{{userInfo.city}}</text>
+      <!-- <view class='empty'></view> -->
+    </view>
+  </view>
+
+  <!-- <view class="line"></view> -->
+
+  <view class='moreinfo-block'>
+    <view class='moreinfo-item'>
+      <text class='moreinfo-left'><text class="iconfont icon-fabu"></text>邮箱</text>
+      <text class='moreinfo-right'>{{userInfo.email}}</text>
+      <!-- <view class='empty'></view> -->
+    </view>
+
+    <view class="line"></view>
+
+    <view class='moreinfo-item'>
+      <text class='moreinfo-left'><text class="iconfont icon-jieshou"></text>租赁权</text>
+      <text class='moreinfo-right'>{{userInfo.rentQualification==0?'无':'有'}}</text>
+      <!-- <view class='empty'></view> -->
+    </view>
+
+    <view class="line"></view>
+
+  </view>
+
+  <view class="line"></view>
+
+  <view class='moreinfo-block'>
+    <navigator class='moreinfo-item' url="./userCoin" open-type="navigate">
+      <text class='moreinfo-left'><text class="iconfont icon-huobiduihuan"></text>信用积分</text>
+      <text class='moreinfo-right'>{{userInfo.credit}}</text>
+    </navigator>
+  </view>
+</view>

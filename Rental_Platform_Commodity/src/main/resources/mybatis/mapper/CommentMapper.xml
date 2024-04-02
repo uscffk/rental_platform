@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ffk.dao.IComment">
+
+    <insert id="addComment" parameterType="comment">
+        insert into comments(id,nftId,content,agree,deny,upChain,time)
+        values (null,#{nftId},#{content},0,0,0,#{time})
+    </insert>
+    <select id="queryByNFTId" resultType="comment">
+        select * from comments
+        <where>
+            <if test="nftId!=null">
+                AND nftId = #{nftId}
+            </if>
+        </where>
+    </select>
+    <update id="updateComment" parameterType="comment">
+        update comments set agree = #{agree},deny = #{deny},upChain = #{upchain} where id = #{id}
+    </update>
+
+    <select id="queryById" resultType="comment">
+        select * from comments where id = #{id}
+    </select>
+
+    <select id="queryComment" parameterType="map" resultType="comment">
+        select * from comments
+        <where>
+            <if test="upChain!=null">
+                upChain =  #{upChain}
+            </if>
+            <if test="nftId!=null">
+                AND nftId = #{nftId}
+            </if>
+        </where>
+    </select>
+
+
+</mapper>

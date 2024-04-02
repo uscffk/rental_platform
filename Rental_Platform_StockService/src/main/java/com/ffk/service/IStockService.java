@@ -1,6 +1,7 @@
 package com.ffk.service;
 
 import com.ffk.pojo.Stock;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * @author 房发科
@@ -27,7 +28,7 @@ public interface IStockService {
      * @param count 数量
      * @return
      */
-    int decreaseStock(int commodityId,int count);
+    int decreaseStock(@Param("commodityId") int commodityId, @Param("count") int count);
 
     /**
      * 加库存
@@ -35,7 +36,7 @@ public interface IStockService {
      * @param count  数量
      * @return
      */
-    int addStock(int commodityId,int count);
+    int addStock(@Param("commodityId") int commodityId, @Param("count") int count);
 
     /**
      * 查询库存
@@ -43,4 +44,11 @@ public interface IStockService {
      * @return
      */
     Stock queryStock(int commodityId);
+
+    /**
+     * 更新库存
+     * @param stock
+     * @return
+     */
+    int updateStock(Stock stock);
 }

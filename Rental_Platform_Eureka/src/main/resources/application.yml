@@ -10,3 +10,14 @@ eureka:
     fetch-registry: false  #fetch-registry如果为false，则表示自己为注册中心
     service-url:
       defaultZone: http://localhost:7001/eureka/
+
+hystrix:
+  dashboard:
+    proxy-stream-allow-list: "localhost"
+
+# 度量指标监控与健康检查
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream

@@ -1,0 +1,27 @@
+<import src="/dist/loadmore/index.wxml" />
+<template is="zan-loadmore" data="{{loading: isLoading}}" />
+<view wx:if="{{!isLoading}}">
+  <scroll-view class="types" scroll-y="true" style="height:{{scrollHeight}}px;">
+    <view wx:key="" wx:for="{{typeData}}" data-index="{{index}}" class="type {{currentIndex == typeData[index].id-1 ? 'active' : ''}}" bindtap="handleItemTap" data-current="{{typeData[index].id}}">
+      <view class="border"></view>
+      <text>{{typeData[index].name}}</text>
+    </view>
+  </scroll-view>
+
+  <view class="container">
+    <view class="list">
+      <view class="goods-wrap" wx:key="" wx:for="{{goodData}}" bindtap="tapGood" data-gid="{{item.id}}">
+        <image class="goods-img" src="{{imagePrefix}}commodityService/upload/imgs/{{item.picture}}"></image>
+        <view class="text">
+          <view class="title" style="text-align:center;">
+            <text>{{item.name}}</text>
+          </view>
+          <view class="price" style="text-align:center;">
+            <text class="new">￥{{item.rentPrice==0?'分期付款':item.rentPrice}}</text>
+            <text class="old">/{{item.billMethod==0?'小时':item.billMethod==1?'天':'月'}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

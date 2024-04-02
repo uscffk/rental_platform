@@ -41,4 +41,9 @@ public class IStockServiceImpl implements IStockService{
     public Stock queryStock(int commodityId) {
         return stockService.queryStock(commodityId);
     }
+
+    @Override
+    public int updateStock(Stock stock) {
+        return stockService.updateStock(stock);
+    }
 }

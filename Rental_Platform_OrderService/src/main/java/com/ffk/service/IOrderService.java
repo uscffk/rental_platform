@@ -1,10 +1,9 @@
 package com.ffk.service;
 
 import com.ffk.pojo.Order;
-import com.ffk.pojo.RentBeforeBuy;
-
 import java.util.List;
 import java.util.Map;
+
 
 /**
  * @author 房发科
@@ -12,30 +11,45 @@ import java.util.Map;
  */
 public interface IOrderService {
     /**
-     * 新增订单
+     * 更新订单
      * @param order
      * @return
      */
-    int addOrder(Order order);
-
-    /**
-     * 修改订单
-     * @param order
-     * @return
-     */
-    int updateOrder(Order order);
+    int  updateOrder(Order order);
 
     /**
      * 查询订单
      * @param map
      * @return
      */
-    List<RentBeforeBuy> queryOrder(Map map);
+    List<Order> queryOrder(Map map) throws Exception;
 
     /**
-     * 删除订单
+     * 新增订单
+     * @param order
+     * @return
+     */
+    int addOrder(Order order) throws Exception;
+
+    /**
+     * 按id查询订单
      * @param id
      * @return
      */
-    int deleteOrder(int id);
+    Order queryById(int id);
+
+    /**
+     * 根据NFTID 找订单
+     * @param nftID
+     * @return
+     */
+    Order queryOrderByNFTID(int nftID) throws Exception;
+
+    /**
+     * 根据订单ID查NFT ID
+     * @param orderId
+     * @return
+     */
+    int queryNFTIDByOrderId(int orderId) throws Exception;
+
 }

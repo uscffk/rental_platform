@@ -1,0 +1,29 @@
+<import src="/dist/loadmore/index.wxml" />
+<import src="/dist/tab/index.wxml" />
+<import src="/common/copyright/copyright" />
+
+<view class="weui-search-bar">
+  <view class="weui-search-bar__form">
+    <view class="weui-search-bar__box">
+      <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+      <input style="text-align:center" type="text" class="weui-search-bar__input"  disabled='true' placeholder="搜索商品" bindtap="wxSearchTab"/>
+    </view>
+  </view>
+</view>
+
+<view>{{ searchValue}}</view>
+
+<view class="container">
+  <map
+      id="myMap"
+      style="width: 100%; height: 600px;"
+      latitude="{{latitude}}"
+      longitude="{{longitude}}"
+      markers="{{markers}}"
+      bindmarkertap="clickMarker"
+      show-location
+      data-markers="{{markers}}"
+    ></map>
+</view>
+
+

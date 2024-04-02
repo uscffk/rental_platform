@@ -4,14 +4,10 @@ import com.ffk.constant.Constants;
 import com.ffk.pojo.Commodity;
 import com.ffk.pojo.CommonResult;
 import com.ffk.service.ICommodityService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-import javax.servlet.http.HttpServletRequest;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.util.HashMap;
+import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
@@ -22,16 +18,20 @@ import java.util.Map;
 @RestController
 @RequestMapping("/commodities")
 public class CommodityController {
+
     @Autowired
     private ICommodityService commodityService;
+
+    Logger logger = LoggerFactory.getLogger(CommodityController.class);
 
     /**
      * 添加商品
      * @param commodity
      * @return
      */
-    @RequestMapping(method = RequestMethod.POST)
-    public CommonResult addCommodity(Commodity commodity){
+    @Deprecated
+    @RequestMapping(value = "/add",method = RequestMethod.POST)
+    public CommonResult addCommodity(@RequestBody Commodity commodity) throws Exception {
         int rs = commodityService.addCommodity(commodity);
         //添加成功
         if(rs > 0){
@@ -42,26 +42,71 @@ public class CommodityController {
     }
 
     /**
-     * 查询商品
+     * 更新商品
+     * @param commodity
      * @return
      */
-    @RequestMapping(method = RequestMethod.GET)
-    public CommonResult queryCommodity(HttpServletRequest request) throws UnsupportedEncodingException {
-        Map<String, String[]> parameterMap = request.getParameterMap();
-        if(parameterMap.size()>=0){
-            HashMap<String,String> conditionMap = new HashMap<>();
-            for (String condition : parameterMap.keySet()) {
-                //转码解决get传中文导致乱码问题
-                conditionMap.put(condition, URLDecoder.decode(parameterMap.get(condition)[0], "UTF-8"));
-            }
+    @RequestMapping(value = "/update",method = RequestMethod.POST)
+    public CommonResult updateCommodity(@RequestBody Commodity commodity){
+
+        int rs = commodityService.updateCommodity(commodity);
+        if(rs > 0){
+            return new CommonResult(Constants.SUCCESS_CODE,"更新商品成功",null);
+        }
+        return new CommonResult(Constants.FAIL_CODE,"更新商品失败",null);
+    }
+
+    /**
+     * 查询商品
+     * @param conditionMap
+     * @return
+     */
+    @RequestMapping(value = "/query",method = RequestMethod.POST)
+    public CommonResult queryCommodity(@RequestBody Map conditionMap) {
+        logger.info("查询条件:{}",conditionMap);
+        if(conditionMap.size()>=0){
             try {
+                logger.info("查询条件:{}",conditionMap);
                 List<Commodity> commodities = commodityService.queryCommodity(conditionMap);
+                logger.info("rsult:{}",commodities);
                 return new CommonResult(Constants.SUCCESS_CODE,"查询成功",commodities);
             }catch (Exception e){
-                return new CommonResult(Constants.FAIL_CODE,"查询失败",null);
+                e.printStackTrace();
             }
         }
         return new CommonResult(Constants.FAIL_CODE,"查询失败",null);
+    }
+
+    /**
+     * 按ID查询
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/queryById",method = RequestMethod.GET)
+    public CommonResult queryById(@RequestParam("id") int id){
+        try {
+            logger.info("查询的商品Id:{}",id);
+            Commodity commodity = commodityService.queryById(id);
+            logger.info("查询商品结果:{}",commodity);
+            return new CommonResult(Constants.SUCCESS_CODE,"ok",commodity);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return new CommonResult(Constants.FAIL_CODE,"error");
+    }
+
+
+    @RequestMapping(value = "/queryTotal",method = RequestMethod.POST)
+    public CommonResult queryTotalAmount(){
+        try{
+            int total = commodityService.getTotal();
+            logger.info("数量:{}",total);
+            return new CommonResult(Constants.SUCCESS_CODE,"ok",total);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return new CommonResult(Constants.FAIL_CODE,"error",null);
     }
 
 }

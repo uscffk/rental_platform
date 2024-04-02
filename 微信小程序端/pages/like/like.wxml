@@ -1,0 +1,27 @@
+<Tabs tabs="{{tabs}}" bindtabsItemChange="handleTabsItemChange">
+  <view class="collect_main">
+
+    <view class="collect_content">
+        <view
+        class="goods_item"
+        wx:for="{{viewCollect}}"
+        wx:key="goods_id"
+      
+        >
+        <!-- 左侧 图片容器 -->
+        <view class="goods_img_wrap" bindtap="goDetails" data-key="{{item.commodity.id}}">
+          <image mode="widthFix" wx:if="{{item.commodity.picture}}" src="{{imagePrefix}}commodityService/upload/imgs/{{item.commodity.picture}}">
+          </image>
+        </view>
+        <!-- 右侧 商品容器 -->
+        <view class="goods_info_wrap">
+          <view class="goods_name">商品名称:{{item.commodity.name}}</view>
+          <view>商品分类:{{item.commodity.categories.name}}</view>
+          <!-- <view class="goods_price">租赁价格:￥{{item.commodity.rentPrice}}</view> -->
+          <view class="goods_name">单期租赁价格:￥{{item.commodity.rentPrice}}</view>
+          <button class="cancelLike" bindtap="cancelLike" data-key="{{item.id}}">取消收藏</button>
+        </view>
+      </view>
+    </view>
+  </view>
+</Tabs>

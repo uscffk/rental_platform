@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ffk.dao.IFeedBack">
+
+     <insert id="addFeedBack" parameterType="feedBack">
+         insert into feedback (id,content,userId,manufacturerId,picture)
+         VALUES (null,#{content},#{userId},#{manufacturerId},#{picture})
+     </insert>
+
+    <update id="updateFeedBack" parameterType="feedback">
+        update feedback
+        <set>
+            <if test="content!=null">
+                content = #{content},
+            </if>
+            <if test="userId!=null">
+                userId = #{userId},
+            </if>
+            <if test="manufacturerId!=null">
+                manufacturerId = #{manufacturerId}
+            </if>
+        </set>
+        where picture = #{picture}
+    </update>
+
+
+    <select id="queryFeedBack" parameterType="map" resultMap="getFeedBackUser">
+        select * from feedback
+        <where>
+            <if test="userId!=null">
+                userId = #{userId}
+            </if>
+            <if test="manufacturerId!=null">
+                manufacturerId = #{manufacturerId}
+            </if>
+        </where>
+    </select>
+
+    <delete id="deleteFeedBack">
+        delete from feedback where id =  #{id}
+    </delete>
+
+    <resultMap id="getFeedBackUser" type="feedBack">
+        <association property="users" column="user_id" javaType="users" select="getuser"/>
+    </resultMap>
+
+    <!--我当时为甚么把这条sql写在这里的 可能梦游写的？ 留个纪念好了-->
+    <select id="getuser" resultType="users">
+        select username,userhead from users
+        where id = #{userId}
+    </select>
+</mapper>

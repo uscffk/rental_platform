@@ -1,0 +1,21 @@
+<!--提现充值记录-->
+
+<view class="in">
+    <view class="left">
+        <text class="{{tab==1?'active-left-in':'left-in'}}" bindtap="recharge">充值记录</text>
+    </view>
+    <view class="right">
+        <text class="{{tab==2?'active-right-in':'right-in'}}" bindtap="getRMB">提现记录</text>
+    </view>
+</view>
+
+<view class="record" wx:for="{{records}}">
+    <view class="on">
+       <text class="action">{{item.type==0?'充值金额':'提取金额'}}</text>
+       <text class="money">￥：{{item.amount}}</text>
+    </view>
+  <view class="under">
+       <text class="time">交易时间: <text class="detail">{{item.time}}</text> </text>
+       <text class="succerr">交易成功</text>
+  </view>
+</view>

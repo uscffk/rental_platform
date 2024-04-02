@@ -1,0 +1,26 @@
+ <!--pages/login/login.wxml-->
+ <view class="content">
+    <view style="text-align: center;">
+      <image src="../../images/logo.png"></image>
+    </view>
+
+   <view class="account">
+     <view class="title">账号</view>
+     <view class="num"><input bindinput="accountInput" placeholder="用户名" placeholder-style="color:#999999;"/></view>
+   </view>
+   <view class="hr"></view>
+   <view class="account">
+     <view class="title">密码</view>
+     <view class="num"><input bindblur="pwdBlur" placeholder="请输入密码" password placeholder-style="color:#999999;"/></view>
+   </view>
+ <view class="hr"></view>
+ <button class="btn" disabled="{{disabled}}" type="{{btnstate}}" bindtap="login">登录</button>
+ <view class="operate">
+
+ <view style="width: 100%;">
+ <button class="btn"  bindtap="goRegister">注册</button>
+ </view>
+ 
+ </view>
+
+ </view>

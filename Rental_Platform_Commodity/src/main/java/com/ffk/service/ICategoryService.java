@@ -37,4 +37,10 @@ public interface ICategoryService {
      * @return
      */
     List<CommodityCategory> queryCategory(Map map);
+
+    /**
+     * 查种类数目
+     * @return
+     */
+    int getTotal();
 }

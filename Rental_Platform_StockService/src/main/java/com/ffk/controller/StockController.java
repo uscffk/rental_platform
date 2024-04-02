@@ -5,10 +5,8 @@ import com.ffk.pojo.CommonResult;
 import com.ffk.pojo.Stock;
 import com.ffk.service.IStockService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 
 /**
  * @author 房发科
@@ -22,12 +20,32 @@ public class StockController {
     private IStockService stockService;
 
     /**
+     * 插入库存记录
+     * @param stock
+     * @return
+     */
+    @RequestMapping(value = "",method = RequestMethod.POST)
+    public CommonResult insertStock(@RequestBody Stock stock){
+        try {
+            int rs = stockService.insertStock(stock);
+            if(rs>0){
+                return new CommonResult(Constants.SUCCESS_CODE,"ok",null);
+            }
+            return new CommonResult(Constants.FAIL_CODE,"error",null);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new CommonResult(Constants.FAIL_CODE,"error",null);
+        }
+
+    }
+
+    /**
      * 根据商品ID查询库存
      * @param commodityId 商品ID
      * @return
      */
     @RequestMapping(value = "/{commodityId}",method = RequestMethod.GET)
-    public CommonResult queryStock(@PathVariable int commodityId){
+    public CommonResult queryStock(@PathVariable("commodityId") int commodityId){
         try {
             Stock stock = stockService.queryStock(commodityId);
             return new CommonResult<Stock>(Constants.SUCCESS_CODE,"查询成功",stock);
@@ -43,8 +61,8 @@ public class StockController {
      * @param count 数量
      * @return
      */
-    @RequestMapping(value = "/decrease/{commodityId}/{count}",method = RequestMethod.PUT)
-    public CommonResult decreaseStock(@PathVariable int commodityId,@PathVariable int count){
+    @RequestMapping(value = "/decrease",method = RequestMethod.POST)
+    public CommonResult decreaseStock(@RequestParam("commodityId") int commodityId,@RequestParam("count") int count){
         if(count<=0){
             return new CommonResult(Constants.FAIL_CODE,"必须大于0",null);
         }
@@ -60,8 +78,14 @@ public class StockController {
         }
     }
 
-
-    public CommonResult addStock(@PathVariable int commodityId,@PathVariable int count){
+    /**
+     * 加库存
+     * @param commodityId
+     * @param count
+     * @return
+     */
+    @RequestMapping(value = "/increase",method = RequestMethod.POST)
+    public CommonResult addStock(@RequestParam("commodityId") int commodityId,@RequestParam("count") int count){
         if(count<=0){
             return new CommonResult(Constants.FAIL_CODE,"必须大于0",null);
         }
@@ -75,5 +99,21 @@ public class StockController {
             e.printStackTrace();
             return new CommonResult(Constants.FAIL_CODE,"error",null);
         }
+    }
+
+
+
+
+    @RequestMapping(value = "/updateStock",method = RequestMethod.POST)
+    public CommonResult updateStock(@RequestBody Stock stock){
+        try {
+            int rs = stockService.updateStock(stock);
+            if(rs!=0){
+                return new CommonResult(Constants.SUCCESS_CODE,"ok");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return new CommonResult(Constants.FAIL_CODE,"error");
     }
 }

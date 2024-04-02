@@ -3,6 +3,9 @@ package com.ffk.pojo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
+
 /**
  * @author 房发科
  * @date 2021/2/25 22:11
@@ -10,7 +13,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Commodity {
+public class Commodity implements Comparable<Commodity>{
+
     /**
      * 商品id
      */
@@ -24,17 +28,13 @@ public class Commodity {
     /**
      * 每期租赁价格
      */
-    float rentPrice;
+    int rentPrice;
 
     /**
      * 商品出售价格
      */
-    float sellPrice;
+    int sellPrice;
 
-    /**
-     * 商品厂商id
-     */
-    int manufacturer;
 
     /**
      * 商品类别id
@@ -67,16 +67,6 @@ public class Commodity {
     int rentForSale;
 
     /**
-     * 经度
-     */
-    float longitude;
-
-    /**
-     * 纬度
-     */
-    float latitude;
-
-    /**
      * 详细位置描述
      */
     String detailLoc;
@@ -87,15 +77,59 @@ public class Commodity {
     int billMethod;
 
     /**
-     * 商品状态 0：正常供应 1：维护中
-     */
-    int status;
-
-    /**
-     * 最大期数 主要用于以租代售（最大分期数）和先租后买（允许最大的体验时间）
+     * 最大期数 用于以租代售（最大分期数）
      */
     int timeNumber;
 
+    /**
+     * 厂商Id
+     */
+    int manufacturerId;
+
+    /**
+     * 押金
+     */
+    int deposit;
+
+    /**
+     * 该商品所属的平台发布的 NFT ID
+     */
+    int rentOwnershipnft;
+
+    /**
+     * 该NFT被拍卖的合约地址 一个租赁权NFT ID对应一个拍卖合约
+     */
+    String auctionAddress;
+
+    /**
+     * 商品
+     */
+    List<NFTCommodity> nftCommodityList;
+
+    /**
+     * 库存
+     */
     Stock stock;
+
+    /**
+     * 商品种类
+     */
     CommodityCategory categories;
+
+    /**
+     * 厂商
+     */
+    Manufacturer manufacturers;
+
+    /**
+     * 租赁站点
+     */
+    List<BackLocation> backLocations;
+
+    @Override
+    public int compareTo(Commodity o) {
+        //按Id排序
+        int i = this.getId() - o.getId();
+        return i;
+    }
 }

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ffk.dao.IRecharge">
+
+    <insert id="addRecharge" parameterType="recharge">
+       insert into recharge(id, identity, fromId, amount, type, time)
+       VALUES (null,#{identity},#{fromId},#{amount},#{type},now())
+    </insert>
+
+    <delete id="deleteRecharge">
+        delete from recharge where id = #{id}
+    </delete>
+
+    <select id="queryRecharge" parameterType="map" resultType="recharge">
+        select * from recharge
+        <where>
+            <if test="id!=null">
+                id = #{id}
+            </if>
+            <if test="identity!=null">
+                AND identity = #{identity}
+            </if>
+            <if test="fromId!=null">
+                AND fromId = #{fromId}
+            </if>
+            <if test="type!=null">
+                AND type = #{type}
+            </if>
+        </where>
+        <choose>
+            <when test="byDay!=null">
+                group by DATE(time)
+            </when>
+            <when test="byWeek!=null">
+                group by WEEK(time)
+            </when>
+            <when test="byMonth!=null">
+                group by MONTH(time)
+            </when>
+            <when test="byYear!=null">
+                group by YEAR(time)
+            </when>
+        </choose>
+        <if test="limit!=null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+</mapper>

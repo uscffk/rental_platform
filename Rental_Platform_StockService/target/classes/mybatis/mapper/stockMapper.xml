@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ffk.dao.IStock">
 
-    <insert id="addStock" parameterType="stock">
+    <insert id="insertStock" parameterType="stock">
         insert into stocks (id,commodity_id,number)
         values (null ,#{commodityId},#{number})
     </insert>
@@ -12,7 +12,23 @@
     </delete>
 
     <update id="updateStock" parameterType="stock">
-        update stocks set number = #{number}
+        update stocks
+        <set>
+            <if test="number!=null">
+                number = #{number}
+            </if>
+        </set>
+        where commodity_id = #{commodityId}
+    </update>
+
+    <update id="addStock">
+        update stocks set number = number+#{count}
+        where commodity_id = #{commodityId}
+    </update>
+
+    <update id="decreaseStock">
+        update stocks set number = number-#{count}
+        where commodity_id = #{commodityId}
     </update>
 
     <select id="queryStock" resultType="stock">

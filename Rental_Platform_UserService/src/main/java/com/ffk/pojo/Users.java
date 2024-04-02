@@ -3,6 +3,7 @@ package com.ffk.pojo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 
 /**
  * <p>
@@ -15,7 +16,20 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Users{
+public class Users {
+
+    /**
+     * 城市
+     */
+    private String city;
+    /**
+     * 省
+     */
+    private String province;
+    /**
+     * 性别
+     */
+    private int sex;
 
     /**
      * 用户名
@@ -52,20 +66,31 @@ public class Users{
      */
     private String phone;
 
+
+
     /**
-     * 脸部信息
+     * 登录密码
      */
-    private String face;
+    private String password;
+
+    /**
+     * 合约地址
+     */
+    private String contractAddress;
+
+    /**
+     * 是否有租赁资格
+     */
+    private int rentQualification;
+
+    /**
+     * 信用积分
+     */
+    private int credit;
 
     /**
      * 余额
      */
-    private float balance;
-
-    /**
-     * 钱包地址
-     */
-    private String walletAddress;
-
+    private int balance;
 
 }

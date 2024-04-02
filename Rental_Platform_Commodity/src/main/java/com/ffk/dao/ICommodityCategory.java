@@ -1,6 +1,7 @@
 package com.ffk.dao;
 
 import com.ffk.pojo.CommodityCategory;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +10,7 @@ import java.util.Map;
  * @author 房发科
  * @date 2021/2/23 16:33
  */
+@Mapper
 @Repository
 public interface ICommodityCategory {
     /**
@@ -38,4 +40,10 @@ public interface ICommodityCategory {
      * @return
      */
     List<CommodityCategory> queryCategory(Map map);
+
+    /**
+     * 查种类数目
+     * @return
+     */
+    int getTotal();
 }

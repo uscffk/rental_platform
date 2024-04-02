@@ -1,23 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="commodity@localhost" uuid="f3dc6fd7-d58c-4014-9c05-b7f67e56d77b">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/commodity</jdbc-url>
-    </data-source>
-    <data-source source="LOCAL" name="order@localhost" uuid="e3f5d44f-e0cf-442d-aa1f-ae4f1b99267c">
+    <data-source source="LOCAL" name="order@localhost" uuid="e3164347-3c33-4b36-97ef-e753a7c890d2">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/order</jdbc-url>
     </data-source>
-    <data-source source="LOCAL" name="user@localhost" uuid="1052b510-ca2f-4c82-8c3c-18549bdb6044">
+    <data-source source="LOCAL" name="commodity@localhost" uuid="c3b7d781-fd73-4964-b3cc-2907bb98c680">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/commodity</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="manufacturer@localhost" uuid="00236d31-b667-419f-a794-83a42143202f">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/manufacturer</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="user@localhost" uuid="3037f750-d39d-40f4-98bb-1a55ce98fec5">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/user</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="stock@localhost" uuid="e31f6908-3b22-4cc1-9e1c-edd52c65db31">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/stock</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="platform@localhost" uuid="365bf7d5-3c64-425b-8197-bc5ef22185dc">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/platform</jdbc-url>
     </data-source>
   </component>
 </project>
